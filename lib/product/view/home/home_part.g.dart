@@ -9,6 +9,7 @@ class BottomAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      color: ProjectColor.superSilver(),
       shape: const CircularNotchedRectangle(),
       padding: EdgeInsets.zero,
       notchMargin: _WidgetSize()._notchMargin,

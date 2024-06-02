@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:product_app/product/product/constant/color/project_color.dart';
+import 'package:product_app/product/product/widget/draw_widget/naw_drawer_widget.dart';
 
 part 'home_part.g.dart';
+part 'appbar_part.g.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -16,10 +18,9 @@ class _HomeViewState extends GenericHomeView<HomeView> {
     return DefaultTabController(
       length: _MyTabbarName.values.length,
       child: Scaffold(
-        bottomNavigationBar: BottomAppBarWidget(
-          widget: _tabbarMethod(),
-        ),
-        appBar: AppBar(),
+        drawer: const NawDrawerWidget(),
+        bottomNavigationBar: BottomAppBarWidget(widget: _tabbarMethod()),
+        appBar: const _PartAppBar(),
         floatingActionButton: const _FabWidget(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: _tabbarView(),
@@ -31,7 +32,7 @@ class _HomeViewState extends GenericHomeView<HomeView> {
     return TabBarView(
       physics: const NeverScrollableScrollPhysics(),
       controller: _tabController,
-      children: const [Placeholder(), Placeholder(), Placeholder(), Placeholder()],
+      children: [Container(), const Placeholder(), const Placeholder(), const Placeholder()],
     );
   }
 
@@ -55,6 +56,12 @@ class _HomeViewState extends GenericHomeView<HomeView> {
 class _WidgetSize {
   final double fabElevation = 20;
   final double _notchMargin = 10;
+  final double appBarText = 25;
+  final double welcomeTextSize = 13;
+}
+
+class _AppBarPaddinng extends EdgeInsets {
+  const _AppBarPaddinng.all() : super.all(8.0);
 }
 
 abstract class GenericHomeView<T extends HomeView> extends State<T> with TickerProviderStateMixin {
