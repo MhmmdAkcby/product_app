@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:product_app/product/product/constant/color/project_color.dart';
-import 'package:product_app/product/view/home/home_view.dart';
+import 'package:product_app/product/view/main_view/main%20scheme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
         ),
       ),
-      home: const HomeView(),
+      home: const MainScheme(),
     );
   }
 }

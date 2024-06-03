@@ -1,4 +1,4 @@
-part of 'home_view.dart';
+part of 'main scheme.dart';
 
 class _PartAppBar extends StatelessWidget implements PreferredSizeWidget {
   const _PartAppBar({
@@ -16,11 +16,10 @@ class _PartAppBar extends StatelessWidget implements PreferredSizeWidget {
           'Welcome',
           style: _textTheme(context, ProjectColor.darkColor(), FontWeight.w300, _WidgetSize().welcomeTextSize),
         ),
-        Padding(
-          padding: const _AppBarPaddinng.all(),
+        const Padding(
+          padding: _AppBarPaddinng.all(),
           child: CircleAvatar(
-            backgroundColor: ProjectColor.flushOrange(),
-            child: Icon(Icons.person, color: ProjectColor.whiteColor()),
+            child: Icon(Icons.person),
           ),
         ),
       ],

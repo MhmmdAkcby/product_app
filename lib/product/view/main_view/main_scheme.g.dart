@@ -1,4 +1,4 @@
-part of 'home_view.dart';
+part of 'main scheme.dart';
 
 class BottomAppBarWidget extends StatelessWidget {
   const BottomAppBarWidget({
