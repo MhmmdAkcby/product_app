@@ -83,11 +83,11 @@ class Products {
     title = json['title'];
     description = json['description'];
     category = json['category'];
-    price = json['price'];
-    discountPercentage = json['discountPercentage'];
-    rating = json['rating'];
+    price = (json['price'] as num?)?.toDouble(); // Ensure double type
+    discountPercentage = (json['discountPercentage'] as num?)?.toDouble(); // Ensure double type
+    rating = (json['rating'] as num?)?.toDouble(); // Ensure double type
     stock = json['stock'];
-    tags = json['tags'].cast<String>();
+    tags = json['tags'] != null ? List<String>.from(json['tags']) : null;
     brand = json['brand'];
     sku = json['sku'];
     weight = json['weight'];
@@ -104,7 +104,7 @@ class Products {
     returnPolicy = json['returnPolicy'];
     minimumOrderQuantity = json['minimumOrderQuantity'];
     meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
-    images = json['images'].cast<String>();
+    images = json['images'] != null ? List<String>.from(json['images']) : null;
     thumbnail = json['thumbnail'];
   }
 
@@ -150,9 +150,9 @@ class Dimensions {
   Dimensions({this.width, this.height, this.depth});
 
   Dimensions.fromJson(Map<String, dynamic> json) {
-    width = json['width'];
-    height = json['height'];
-    depth = json['depth'];
+    width = (json['width'] as num?)?.toDouble();
+    height = (json['height'] as num?)?.toDouble();
+    depth = (json['depth'] as num?)?.toDouble();
   }
 
   Map<String, dynamic> toJson() {

@@ -13,11 +13,14 @@ class ProductCardWidget extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-          Card(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * _WidgetSize().sizeBoxHeight,
-              width: MediaQuery.of(context).size.height * _WidgetSize().sizeBoxWeight,
-              child: Column(children: [_image(), _text()]),
+          InkWell(
+            onTap: () {},
+            child: Card(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * _WidgetSize().sizeBoxHeight,
+                width: MediaQuery.of(context).size.height * _WidgetSize().sizeBoxWeight,
+                child: Column(children: [_image(), _text()]),
+              ),
             ),
           ),
         ],
