@@ -10,17 +10,15 @@ class CircularCardWidget extends StatelessWidget {
   final double _radius = 18;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: const _MyEdgeInsets.all(),
-        height: MediaQuery.of(context).size.height * _containerSize,
-        width: MediaQuery.of(context).size.height * _containerSize,
-        child: InkWell(
-          onTap: () {},
-          child: Card(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(_radius))),
-            child: Center(child: Text(text)),
-          ),
+    return Container(
+      margin: const _MyEdgeInsets.all(),
+      height: MediaQuery.of(context).size.height * _containerSize,
+      width: MediaQuery.of(context).size.height * _containerSize,
+      child: InkWell(
+        onTap: () {},
+        child: Card(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(_radius))),
+          child: Center(child: Text(text)),
         ),
       ),
     );
@@ -29,4 +27,5 @@ class CircularCardWidget extends StatelessWidget {
 
 class _MyEdgeInsets extends EdgeInsets {
   const _MyEdgeInsets.all() : super.all(4);
+  const _MyEdgeInsets.bottom() : super.only(bottom: 120);
 }
