@@ -6,14 +6,15 @@ class _PartAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
   @override
   Widget build(BuildContext context) {
+    var d = AppLocalizations.of(context);
     return AppBar(
       title: Text(
-        'Product Market',
+        d!.appBarTitle,
         style: _textTheme(context, ProjectColor.darkColor(), FontWeight.w300, _WidgetSize().appBarText),
       ),
       actions: [
         Text(
-          'Welcome',
+          d.welcomeText,
           style: _textTheme(context, ProjectColor.darkColor(), FontWeight.w300, _WidgetSize().welcomeTextSize),
         ),
         const Padding(

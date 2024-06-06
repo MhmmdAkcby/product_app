@@ -7,8 +7,8 @@ class _ProductCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 2,
+    return SizedBox(
+      height: 100,
       child: BlocBuilder<ProductCubit, ProductCubitState>(
         builder: (context, state) {
           if (state.isLoading) {

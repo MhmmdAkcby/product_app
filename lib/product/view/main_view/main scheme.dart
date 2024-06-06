@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:product_app/product/product/constant/color/project_color.dart';
 import 'package:product_app/product/product/widget/draw_widget/naw_drawer_widget.dart';
 import 'package:product_app/product/view/home/home_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 part 'main_scheme.g.dart';
 part 'appbar_part.g.dart';
@@ -59,6 +60,7 @@ class _WidgetSize {
   final double _notchMargin = 10;
   final double appBarText = 25;
   final double welcomeTextSize = 13;
+  final double tabElevation = 20;
 }
 
 class _AppBarPaddinng extends EdgeInsets {

@@ -1,0 +1,9 @@
+{"@@locale": "en",
+    "appBarTitle" : "Product Market",
+    "infoTextBeautyText" : "Beauty",
+    "infoTextBeautyButtonText" : "See all",
+    "welcomeText" : "Welcome",
+    "nawCategoriesName" : "Categories",
+    "saleCardMainText" : "Sale",
+    "saleCardDescription": "50% off all products for a valid time only!"
+}
