@@ -40,27 +40,36 @@ class SaleCardWidget extends StatelessWidget {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  mainText,
-                  style: textTheme(context, ProjectColor.whiteColor(), _WidgetSize().mainTextFontSize, FontWeight.bold),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Icon(
-                  icon,
-                  size: _WidgetSize().iconSize,
-                  color: ProjectColor.amberColor(),
-                )
-              ],
+              children: [_mainText(context), _iconMethod()],
             ),
-            Text(
-              description,
-              style: textTheme(context, ProjectColor.whiteColor(), _WidgetSize().descriptionFontSize, FontWeight.w400),
-              overflow: TextOverflow.ellipsis,
-            )
+            _descriptionText(context)
           ],
         ),
       ),
+    );
+  }
+
+  Text _descriptionText(BuildContext context) {
+    return Text(
+      description,
+      style: textTheme(context, ProjectColor.whiteColor(), _WidgetSize().descriptionFontSize, FontWeight.w400),
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+
+  Icon _iconMethod() {
+    return Icon(
+      icon,
+      size: _WidgetSize().iconSize,
+      color: ProjectColor.amberColor(),
+    );
+  }
+
+  Text _mainText(BuildContext context) {
+    return Text(
+      mainText,
+      style: textTheme(context, ProjectColor.whiteColor(), _WidgetSize().mainTextFontSize, FontWeight.bold),
+      overflow: TextOverflow.ellipsis,
     );
   }
 }

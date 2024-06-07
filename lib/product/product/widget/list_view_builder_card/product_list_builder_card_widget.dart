@@ -1,10 +1,17 @@
-part of 'home_view.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class _ProdoctBeautyList extends StatelessWidget {
-  const _ProdoctBeautyList({
+import '../../../cubit/product_cubit.dart';
+import '../../../cubit/product_cubit_state.dart';
+import '../../../model/product_model.dart';
+import '../card/product_card_widget.dart';
+
+class ProductListBuilderCardWidget extends StatelessWidget {
+  const ProductListBuilderCardWidget({
     super.key,
+    required this.filterText,
   });
-  final _filterText = 'beauty';
+  final String filterText;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -14,14 +21,14 @@ class _ProdoctBeautyList extends StatelessWidget {
           if (state.isLoading) {
             return const Center(child: CircularProgressIndicator());
           }
-          final filteredProducts = state.item!.where((product) => product.category == _filterText).toList();
+          final filteredProducts = state.item!.where((product) => product.category == filterText).toList();
 
           return ListView.builder(
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
             itemCount: filteredProducts.length,
             itemBuilder: (BuildContext context, int index) {
-              return _ProductBeautyCard(model: filteredProducts[index]);
+              return _ProductListBuilderCard(model: filteredProducts[index]);
             },
           );
         },
@@ -30,8 +37,8 @@ class _ProdoctBeautyList extends StatelessWidget {
   }
 }
 
-class _ProductBeautyCard extends StatelessWidget {
-  const _ProductBeautyCard({
+class _ProductListBuilderCard extends StatelessWidget {
+  const _ProductListBuilderCard({
     super.key,
     required Products? model,
   }) : _model = model;

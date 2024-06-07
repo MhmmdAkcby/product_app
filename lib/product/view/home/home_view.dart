@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_app/product/cubit/product_cubit.dart';
 import 'package:product_app/product/cubit/product_cubit_state.dart';
-import 'package:product_app/product/model/product_model.dart';
+import 'package:product_app/product/product/constant/color/project_color.dart';
 import 'package:product_app/product/product/widget/card/circular_card_widget.dart';
-import 'package:product_app/product/product/widget/card/product_card_widget.dart';
 import 'package:product_app/product/product/widget/card/sale_card_widget.dart';
+import 'package:product_app/product/product/widget/draw_widget/naw_drawer_widget.dart';
 import 'package:product_app/product/product/widget/info_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:product_app/product/product/widget/list_view_builder_card/product_list_builder_card_widget.dart';
 part 'home.g.dart';
-part 'home_beauty_product.g.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -33,15 +32,52 @@ class _HomeViewState extends State<HomeView> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const _ProductCategory(),
-            InfoText(text: d!.infoTextBeautyText, buttonText: d.infoTextBeautyButtonText, onTap: () {}),
-            const _ProdoctBeautyList(),
+            //Sale Card1
             SaleCardWidget(
-              mainText: d.saleCardMainText,
+              mainText: d!.saleCardMainText,
               description: d.saleCardDescription,
               icon: Icons.shopify_outlined,
               onTap: () {},
             ),
+            // Categories
+            InfoText(text: d.categoriesHomeViewText, buttonText: d.infoTextButtonText, onTap: () {}),
+            const _ProductCategory(),
+
+            // Beauty Categories
+            InfoText(text: d.infoTextBeautyText, buttonText: d.infoTextButtonText, onTap: () {}),
+            const ProductListBuilderCardWidget(filterText: 'beauty'),
+
+            //Sale Card2
+            SaleCardWidget(
+              mainText: d.saleCardMainText,
+              description: d.saleCardDescription,
+              icon: Icons.food_bank,
+              onTap: () {},
+              colorBegin: ProjectColor.flushOrange(),
+              colorEnd: ProjectColor.darkColor(),
+            ),
+
+            // Groceries Categories
+            InfoText(text: d.infoTextGroceriesText, buttonText: d.infoTextButtonText, onTap: () {}),
+            const ProductListBuilderCardWidget(filterText: 'groceries'),
+
+            // Fragrances Categories
+            InfoText(text: d.infoTextFragrancesText, buttonText: d.infoTextButtonText, onTap: () {}),
+            const ProductListBuilderCardWidget(filterText: 'fragrances'),
+
+            // Sale Card3
+            SaleCardWidget(
+              mainText: d.saleCardMainText,
+              description: d.saleCardDescription,
+              icon: Icons.add_business_sharp,
+              onTap: () {},
+              colorBegin: ProjectColor.flushOrange(),
+              colorEnd: ProjectColor.trustedPurple(),
+            ),
+
+            // Furniture Categories
+            InfoText(text: d.infoTextFurnitureText, buttonText: d.infoTextButtonText, onTap: () {}),
+            const ProductListBuilderCardWidget(filterText: 'furniture'),
           ],
         ),
       ),

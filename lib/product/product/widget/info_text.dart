@@ -21,10 +21,7 @@ class InfoText extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              text,
-              style: textTheme(context, ProjectColor.darkColor(), 30, FontWeight.bold),
-            ),
+            Text(text, style: textTheme(context, ProjectColor.darkColor(), 30, FontWeight.bold)),
             TextButton(onPressed: onTap, child: Text(buttonText))
           ],
         ),

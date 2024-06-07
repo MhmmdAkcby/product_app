@@ -1,9 +1,13 @@
 {"@@locale": "tr",
     "appBarTitle" : "Ürün Marketi",
     "infoTextBeautyText" : "Güzellik",
-    "infoTextBeautyButtonText" : "Tümünü gör",
+    "infoTextButtonText" : "Tümünü gör",
     "welcomeText" : "Hoşgeldiniz",
-    "nawCategoriesName" : "Kategoriler",
+    "nawCateoriesName" : "Kategoriler",
     "saleCardMainText" : "Satış",
-    "saleCardDescription": "Yalnızca geçerli bir süre için tüm ürünlerde %50 indirim!"
+    "saleCardDescription": "Yalnızca geçerli bir süre için tüm ürünlerde %50 indirim!",
+    "infoTextGroceriesText" : "Bakkaliye",
+    "infoTextFragrancesText" : "Parfüm",
+    "infoTextFurnitureText" : "Mobilya",
+    "categoriesHomeViewText" : "Kategori"
 }
