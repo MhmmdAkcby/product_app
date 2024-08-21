@@ -9,5 +9,26 @@
     "infoTextGroceriesText" : "Bakkaliye",
     "infoTextFragrancesText" : "Parfüm",
     "infoTextFurnitureText" : "Mobilya",
-    "categoriesHomeViewText" : "Kategori"
+    "categoriesHomeViewText" : "Kategori",
+    "productShowMore" : "Daha fazla",
+    "productShowLess": "Daha az",
+    "superOpportunity":"Super Fırsat ",
+    "suitableProduct" : "Uygun Ürün",
+    "price": "Fiyat",
+    "buy": "Satın Al",
+    "category": "Kategori",
+    "tags" : "Etiketler",
+    "brands" : "Marka",
+    "depth" : "Derinlik",
+    "height" : "Yükseklik",
+    "width" : "Genişlik",
+    "availabilityStatus" : "Satın Alma Durumu",
+    "shippingInformation" : "Nakliye Bilgileri",
+    "warrantyInformation" : "Garanti Bilgileri",
+    "noReviewsAvailable" : "Yorum yok",
+    "reviews" : "Yorumlar",
+    "anonymous" : "Anonim",
+    "noComment" : "Açıklama yok"
+
+
 }

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:product_app/product/cubit/product_cubit_state.dart';
-import 'package:product_app/product/service/product_service.dart';
+import 'package:product_app/product_market/cubit/product_cubit_state.dart';
+import 'package:product_app/product_market/service/product_service.dart';
 
 class ProductCubit extends Cubit<ProductCubitState> {
   ProductCubit(IProductService productService)
@@ -13,5 +13,9 @@ class ProductCubit extends Cubit<ProductCubitState> {
     emit(state.copyWith(isLoading: true));
     final response = await _productService.fetchProductItemAdvance();
     emit(state.copyWith(isLoading: false, item: response?.products ?? []));
+  }
+
+  void toggleShowText() {
+    emit(state.copyWith(isAllTextShow: !state.isAllTextShow));
   }
 }

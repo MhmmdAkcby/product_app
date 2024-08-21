@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:product_app/product/product/constant/color/project_color.dart';
-import 'package:product_app/product/product/widget/draw_widget/naw_drawer_widget.dart';
+import 'package:product_app/product_market/product/constant/color/project_color.dart';
+import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
 
 class CircularCardWidget extends StatelessWidget {
   const CircularCardWidget({
     super.key,
     required this.text,
+    required this.onTap,
   });
   final String text;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class CircularCardWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height * _WidgetSize().containerSize,
       width: MediaQuery.of(context).size.height * _WidgetSize().containerSize,
       child: InkWell(
-        onTap: () {},
+        onTap: onTap,
         child: Card(
           color: ProjectColor.flushOrange(),
           elevation: _WidgetSize().elevation,

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:product_app/product/model/product_model.dart';
+import 'package:product_app/product_market/model/product_model.dart';
 
 abstract class IProductService {
   IProductService(this.dio);

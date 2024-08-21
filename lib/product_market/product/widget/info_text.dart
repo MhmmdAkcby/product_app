@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:product_app/product/product/constant/color/project_color.dart';
-import 'package:product_app/product/product/widget/draw_widget/naw_drawer_widget.dart';
+import 'package:product_app/product_market/product/constant/color/project_color.dart';
+import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
 
 class InfoText extends StatelessWidget {
   const InfoText({

@@ -9,5 +9,27 @@
     "infoTextGroceriesText" : "Groceries",
     "infoTextFragrancesText" : "Fragrances",
     "infoTextFurnitureText" : "Furniture",
-    "categoriesHomeViewText" : "Categories"
+    "categoriesHomeViewText" : "Categories",
+    "productShowMore" : "Show more",
+    "productShowLess": "Show less",
+    "superOpportunity":"Super Opportunity",
+    "suitableProduct" : "Suitable Product",
+    "price": "Price",
+    "buy": "Buy",
+    "category": "Category",
+    "tags" : "Tags",
+    "brands" : "Brands",
+    "depth" : "Depth",
+    "height" : "Height",
+    "width" : "Width",
+    "availabilityStatus" : "Availability Status",
+    "shippingInformation" : "Shipping Information",
+    "warrantyInformation" : "Warranty Information",
+    "noReviewsAvailable" : "No reviews available",
+    "reviews" : "Reviews",
+    "anonymous" : "Anonymous",
+    "noComment" : "No comment"
+
+   
+
 }

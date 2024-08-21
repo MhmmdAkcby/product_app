@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:product_app/product/cubit/product_cubit.dart';
-import 'package:product_app/product/product/constant/color/project_color.dart';
-import 'package:product_app/product/product/service/project_service.dart';
-import 'package:product_app/product/service/product_service.dart';
-import 'package:product_app/product/view/main_view/main%20scheme.dart';
+import 'package:product_app/product_market/cubit/product_cubit.dart';
+import 'package:product_app/product_market/product/constant/color/project_color.dart';
+import 'package:product_app/product_market/product/service/project_service.dart';
+import 'package:product_app/product_market/service/product_service.dart';
+import 'package:product_app/product_market/view/main_view/main%20scheme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget with ProjectServiceMixin {
         ),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        title: 'Product App',
         localizationsDelegates: const [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
