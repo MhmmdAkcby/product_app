@@ -18,4 +18,20 @@ class ProductCubit extends Cubit<ProductCubitState> {
   void toggleShowText() {
     emit(state.copyWith(isAllTextShow: !state.isAllTextShow));
   }
+
+  void searchProducts(String query) {
+    if (query.isNotEmpty) {
+      final allProducts = state.item ?? [];
+
+      final filteredProducts = allProducts.where((product) {
+        final titleLower = product.title!.toLowerCase();
+        final searchLower = query.toLowerCase();
+        return titleLower.contains(searchLower);
+      }).toList();
+
+      emit(state.copyWith(filterProducts: filteredProducts));
+    } else {
+      emit(state.copyWith(filterProducts: []));
+    }
+  }
 }

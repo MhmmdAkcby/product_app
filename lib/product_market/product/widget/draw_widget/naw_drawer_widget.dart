@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/cubit/product_cubit_state.dart';
-import 'package:product_app/product_market/product/constant/color/project_color.dart';
+import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NawDrawerWidget extends StatelessWidget {

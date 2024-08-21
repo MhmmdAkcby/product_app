@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:product_app/product_market/product/constant/color/project_color.dart';
+import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
 
 class SaleCardWidget extends StatelessWidget {

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/model/product_model.dart';
-import 'package:product_app/product_market/product/constant/color/project_color.dart';
+import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/mixin/image_zoom_mixin.dart';
 import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-part 'part_of_detail_product.dart';
+part 'part_of_detail_product.g.dart';
 
 class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
   const DetailsProductWidget({

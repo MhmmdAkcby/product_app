@@ -28,7 +28,8 @@
     "noReviewsAvailable" : "No reviews available",
     "reviews" : "Reviews",
     "anonymous" : "Anonymous",
-    "noComment" : "No comment"
+    "noComment" : "No comment",
+    "search" : "Search..." 
 
    
 

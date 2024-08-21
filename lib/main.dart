@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
-import 'package:product_app/product_market/product/constant/color/project_color.dart';
+import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/service/project_service.dart';
 import 'package:product_app/product_market/service/product_service.dart';
 import 'package:product_app/product_market/view/main_view/main%20scheme.dart';

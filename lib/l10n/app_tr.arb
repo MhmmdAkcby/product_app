@@ -28,7 +28,8 @@
     "noReviewsAvailable" : "Yorum yok",
     "reviews" : "Yorumlar",
     "anonymous" : "Anonim",
-    "noComment" : "Açıklama yok"
+    "noComment" : "Açıklama yok",
+    "search" : "Ara..." 
 
 
 }

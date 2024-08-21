@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:product_app/product_market/product/constant/color/project_color.dart';
+import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
 import 'package:product_app/product_market/view/home/home_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:product_app/product_market/view/search/search_view.dart';
 
 part 'main_scheme.g.dart';
 part 'appbar_part.g.dart';
@@ -20,6 +21,7 @@ class _MainSchemeState extends GenericMainScheme<MainScheme> {
     return DefaultTabController(
       length: _MyTabbarName.values.length,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         drawer: const NawDrawerWidget(),
         bottomNavigationBar: BottomAppBarWidget(widget: _tabbarMethod()),
         appBar: const _PartAppBar(),
@@ -34,7 +36,7 @@ class _MainSchemeState extends GenericMainScheme<MainScheme> {
     return TabBarView(
       physics: const NeverScrollableScrollPhysics(),
       controller: _tabController,
-      children: const [HomeView(), Placeholder(), Placeholder(), Placeholder()],
+      children: const [HomeView(), SearchView(), Placeholder(), Placeholder()],
     );
   }
 
