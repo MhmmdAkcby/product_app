@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/model/product_model.dart';
 import 'package:product_app/product_market/product/constant/color/project_color.dart';
+import 'package:product_app/product_market/product/mixin/image_zoom_mixin.dart';
 import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 part 'part_of_detail_product.dart';
 
-class DetailsProductWidget extends StatelessWidget {
+class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
   const DetailsProductWidget({
     super.key,
     required this.image,
@@ -133,7 +134,9 @@ class DetailsProductWidget extends StatelessWidget {
     return Stack(
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () {
+            imageZoom(context, image);
+          },
           child: Container(
             child: Image.network(image, fit: BoxFit.cover),
           ),
