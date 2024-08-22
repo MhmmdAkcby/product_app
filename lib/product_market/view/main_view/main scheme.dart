@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
+import 'package:product_app/product_market/view/cart/cart_view.dart';
 import 'package:product_app/product_market/view/home/home_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:product_app/product_market/view/search/search_view.dart';
@@ -36,7 +37,7 @@ class _MainSchemeState extends GenericMainScheme<MainScheme> {
     return TabBarView(
       physics: const NeverScrollableScrollPhysics(),
       controller: _tabController,
-      children: const [HomeView(), SearchView(), Placeholder(), Placeholder()],
+      children: const [HomeView(), SearchView(), CartView(), Placeholder()],
     );
   }
 

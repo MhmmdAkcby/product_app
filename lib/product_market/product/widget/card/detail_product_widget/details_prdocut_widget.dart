@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/model/product_model.dart';
+import 'package:product_app/product_market/product/navigator/navigator_service.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/mixin/image_zoom_mixin.dart';
 import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:product_app/product_market/product/widget/my_button.dart';
 
 part 'part_of_detail_product.g.dart';
 
-class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
+class DetailsProductWidget extends StatefulWidget {
   const DetailsProductWidget({
     super.key,
     required this.image,
@@ -28,6 +31,7 @@ class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
     required this.dimensionsHeight,
     required this.dimensionsWidht,
     required this.reviews,
+    required this.id,
   });
   final String image;
   final String title;
@@ -45,17 +49,30 @@ class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
   final double dimensionsHeight;
   final double dimensionsWidht;
 
+  final int id;
   final int stock;
 
   final List<Reviews>? reviews;
 
   @override
+  State<DetailsProductWidget> createState() => _DetailsProductWidgetState();
+}
+
+class _DetailsProductWidgetState extends State<DetailsProductWidget> with ImageZoomMixin {
+  final GetIt _getIt = GetIt.instance;
+
+  late NavigationService _navigatorService;
+
+  @override
+  void initState() {
+    super.initState();
+    _navigatorService = _getIt<NavigationService>();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-        actions: const [],
-      ),
+      appBar: AppBar(title: Text(widget.title)),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -65,7 +82,7 @@ class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _imageNetwork(context, image),
+                  _imageNetwork(context, widget.image),
                   _productDescription(context),
                   _showProductInfo(context),
                   _showReviews(context),
@@ -75,7 +92,7 @@ class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: _bottomPriceAndRatingContainer(context, price, rating),
+            child: _bottomPriceAndRatingContainer(context, widget.price, widget.rating),
           ),
         ],
       ),
@@ -91,7 +108,7 @@ class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _productTexts(context, title),
+            _productTexts(context, widget.title),
             const Divider(),
             _descriptionText(context),
           ],
@@ -104,7 +121,7 @@ class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
     final isAllTextShow = context.watch<ProductCubit>().state.isAllTextShow;
     return Column(
       children: [
-        _productTexts(context, description),
+        _productTexts(context, widget.description),
         _textButton(context, isAllTextShow),
       ],
     );
@@ -166,8 +183,30 @@ class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _priceAndRaiting(d, price, context, rating),
-          myButton(context, () {}, d!.buy, ProjectColor.flushOrange()),
+          _myButton(d!.buy, ProjectColor.flushOrange()),
+          _addCartButton(),
         ],
+      ),
+    );
+  }
+
+  Widget _addCartButton() {
+    return Card(
+      child: IconButton(
+        icon: const Icon(Icons.shopping_cart_rounded),
+        onPressed: () {
+          final product = Products(
+            id: widget.id,
+            title: widget.title,
+            images: [widget.image],
+            price: widget.price,
+            rating: widget.rating,
+          );
+
+          context.read<ProductCubit>().addToCart(product);
+
+          _navigatorService.pushReplacementNamed("/cart", arguments: widget.id);
+        },
       ),
     );
   }
@@ -217,22 +256,22 @@ class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
     const String value = 'value';
     var d = AppLocalizations.of(context);
     final productDetails = [
-      {title: d!.category, value: category},
-      {title: d.tags, value: tags},
-      {title: d.brands, value: brands},
-      {title: d.depth, value: dimensionsDeth.toString()},
-      {title: d.height, value: dimensionsHeight.toString()},
-      {title: d.width, value: dimensionsWidht.toString()},
-      {title: d.availabilityStatus, value: availabilityStatus},
-      {title: d.shippingInformation, value: shippingInformation},
-      {title: d.warrantyInformation, value: warrantyInformation},
+      {title: d!.category, value: widget.category},
+      {title: d.tags, value: widget.tags},
+      {title: d.brands, value: widget.brands},
+      {title: d.depth, value: widget.dimensionsDeth.toString()},
+      {title: d.height, value: widget.dimensionsHeight.toString()},
+      {title: d.width, value: widget.dimensionsWidht.toString()},
+      {title: d.availabilityStatus, value: widget.availabilityStatus},
+      {title: d.shippingInformation, value: widget.shippingInformation},
+      {title: d.warrantyInformation, value: widget.warrantyInformation},
     ];
     return productDetails;
   }
 
   Widget _showReviews(BuildContext context) {
     var d = AppLocalizations.of(context);
-    if (reviews == null || reviews!.isEmpty) {
+    if (widget.reviews == null || widget.reviews!.isEmpty) {
       return Card(
         child: ListTile(
           title: Text(d!.noReviewsAvailable),
@@ -246,7 +285,7 @@ class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
           ListTile(
             title: Text(d!.reviews),
           ),
-          for (var review in reviews!)
+          for (var review in widget.reviews!)
             Card(
               color: ProjectColor.whiteColor(),
               child: ListTile(

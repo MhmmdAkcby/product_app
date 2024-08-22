@@ -29,7 +29,10 @@
     "reviews" : "Yorumlar",
     "anonymous" : "Anonim",
     "noComment" : "Açıklama yok",
-    "search" : "Ara..." 
+    "search" : "Ara...",
+    "totalPrice":"Toplam Fiyat",
+    "noItem":"Sepet boş",
+    "myCart":"Sepetim"
 
 
 }

@@ -54,6 +54,7 @@ class _ProductListBuilderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DetailsProductWidget(
+      id: _model?.id ?? 0,
       image: _model?.images?.last ?? '',
       title: _model?.title ?? '',
       description: _model?.description ?? '',

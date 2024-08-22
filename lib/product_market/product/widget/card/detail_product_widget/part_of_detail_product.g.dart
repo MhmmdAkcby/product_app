@@ -37,13 +37,13 @@ Widget _priceAndRaiting(AppLocalizations? d, double price, BuildContext context,
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
+      _buildRatingStars(rating),
+      SizedBox(width: _WidgetSize().sizedBoxWidth),
       Text(
         '${d!.price}: \$$price',
         style: _textTheme(context, ProjectColor.whiteColor(), _WidgetSize().priceSizePrice, FontWeight.normal),
         textAlign: TextAlign.center,
       ),
-      SizedBox(width: _WidgetSize().sizedBoxWidth),
-      _buildRatingStars(rating),
     ],
   );
 }
@@ -54,22 +54,16 @@ BoxDecoration _bottomPriceRaitingContainerDecoration() {
 }
 
 //button
-Widget myButton(BuildContext context, Function() onTap, String data, Color color) {
-  return SizedBox(
-    height: MediaQuery.of(context).size.height * _WidgetSize().myButtonHeight,
-    width: MediaQuery.of(context).size.width * _WidgetSize().myButtonWidth,
-    child: MaterialButton(
-      onPressed: onTap,
-      color: color,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(_WidgetSize().borderRadius)),
-      child: Text(
-        data,
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: ProjectColor.whiteColor(),
-              fontSize: _WidgetSize().myButtonFontSize,
-            ),
-      ),
-    ),
+Widget _myButton(String data, Color color) {
+  return MyButton(
+    data: data,
+    textColor: ProjectColor.whiteColor(),
+    fontSize: _WidgetSize().myButtonFontSize,
+    width: _WidgetSize().myButtonWidth,
+    height: _WidgetSize().myButtonHeight,
+    color: color,
+    borderRadius: _WidgetSize().borderRadius,
+    onTap: () {},
   );
 }
 

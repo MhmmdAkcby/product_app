@@ -29,7 +29,10 @@
     "reviews" : "Reviews",
     "anonymous" : "Anonymous",
     "noComment" : "No comment",
-    "search" : "Search..." 
+    "search" : "Search...", 
+    "totalPrice":"Total Price",
+    "noItem":"No items in the cart",
+    "myCart":"My Cart"
 
    
 

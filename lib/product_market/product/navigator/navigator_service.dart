@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:product_app/product_market/product/widget/view_builder_card/product_lwb_widget.dart';
+import 'package:product_app/product_market/view/cart/cart_view.dart';
 import 'package:product_app/product_market/view/detail/detail_view.dart';
 import 'package:product_app/product_market/view/home/home_view.dart';
 import 'package:product_app/product_market/view/main_view/main%20scheme.dart';
@@ -12,6 +13,7 @@ class NavigationService {
     "/home": (context) => const HomeView(),
     "/prdLWB": (context) => const ProductLwbWidget(),
     "/detailView": (context) => const DetailView(),
+    "/cart": (context) => const CartView(),
   };
 
   GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
