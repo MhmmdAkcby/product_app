@@ -42,6 +42,7 @@ dependencies:
 
   #route
   path: ^1.9.0
+  get_it: ^7.7.0
 
 
   flutter_localizations:

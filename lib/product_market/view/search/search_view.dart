@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get_it/get_it.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/model/product_model.dart';
+import 'package:product_app/product_market/product/navigator/navigator_service.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
-import 'package:product_app/product_market/product/widget/view_builder_card/product_lwb_widget.dart';
 
 part 'search.g.dart';
 
@@ -17,6 +18,16 @@ class SearchView extends StatefulWidget {
 
 class _SearchViewState extends State<SearchView> {
   String query = "";
+
+  final GetIt _getIt = GetIt.instance;
+
+  late NavigationService navigatorService;
+
+  @override
+  void initState() {
+    super.initState();
+    navigatorService = _getIt<NavigationService>();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +56,7 @@ class _SearchViewState extends State<SearchView> {
   Widget _lisTileCard(Products? product) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ProductLwbWidget(filterId: product?.id ?? 0),
-            ));
+        navigatorService.pushNamed("/prdLWB", arguments: product?.id ?? 0);
       },
       child: _showProductList(product),
     );

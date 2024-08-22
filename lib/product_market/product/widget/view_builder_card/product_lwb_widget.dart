@@ -1,16 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:product_app/product_market/product/widget/card/detail_product_widget/details_prdocut_widget.dart';
+
 import '../../../cubit/product_cubit.dart';
 import '../../../cubit/product_cubit_state.dart';
 import '../../../model/product_model.dart';
 
 class ProductLwbWidget extends StatefulWidget {
-  const ProductLwbWidget({
-    super.key,
-    required this.filterId,
-  });
-  final int filterId;
+  final int? filterId;
+
+  const ProductLwbWidget({super.key, this.filterId});
 
   @override
   State<ProductLwbWidget> createState() => _ProductLwbWidgetState();
@@ -25,6 +26,7 @@ class _ProductLwbWidgetState extends State<ProductLwbWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final int? filterId = ModalRoute.of(context)?.settings.arguments as int?;
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
@@ -34,7 +36,7 @@ class _ProductLwbWidgetState extends State<ProductLwbWidget> {
             return const Center(child: CircularProgressIndicator());
           }
 
-          final product = state.item!.firstWhere((product) => product.id == widget.filterId);
+          final product = state.item!.firstWhere((product) => product.id == filterId);
 
           return _ProductListBuilderCard(model: product);
         },

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/cubit/product_cubit_state.dart';
+import 'package:product_app/product_market/product/navigator/navigator_service.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/utils/project_string/project_string.dart';
 import 'package:product_app/product_market/product/mixin/product_lwb_gwb_mixin.dart';
@@ -20,11 +22,16 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
+final GetIt _getIt = GetIt.instance;
+
+late NavigationService navigatorService;
+
 class _HomeViewState extends State<HomeView> with ProductLwbGwbMixin {
   @override
   void initState() {
     super.initState();
     context.read<ProductCubit>().fetchProductItemAdvance();
+    navigatorService = _getIt<NavigationService>();
   }
 
   @override
@@ -47,14 +54,12 @@ class _HomeViewState extends State<HomeView> with ProductLwbGwbMixin {
 
             // Beauty Categories
             InfoText(
-                text: d.infoTextBeautyText,
-                buttonText: d.infoTextButtonText,
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DetailView(filterText: ProjectString.beauty.projectToString())));
-                }),
+              text: d.infoTextBeautyText,
+              buttonText: d.infoTextButtonText,
+              onTap: () {
+                navigatorService.pushNamed("/detailView", arguments: ProjectString.beauty.projectToString());
+              },
+            ),
             viewListWB(ProjectString.beauty.projectToString()),
 
             //Sale Card2
@@ -69,26 +74,22 @@ class _HomeViewState extends State<HomeView> with ProductLwbGwbMixin {
 
             // Groceries Categories
             InfoText(
-                text: d.infoTextGroceriesText,
-                buttonText: d.infoTextButtonText,
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DetailView(filterText: ProjectString.groceries.projectToString())));
-                }),
+              text: d.infoTextGroceriesText,
+              buttonText: d.infoTextButtonText,
+              onTap: () {
+                navigatorService.pushNamed("/detailView", arguments: ProjectString.groceries.projectToString());
+              },
+            ),
             viewListWB(ProjectString.groceries.projectToString()),
 
             // Fragrances Categories
             InfoText(
-                text: d.infoTextFragrancesText,
-                buttonText: d.infoTextButtonText,
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DetailView(filterText: ProjectString.fragrances.projectToString())));
-                }),
+              text: d.infoTextFragrancesText,
+              buttonText: d.infoTextButtonText,
+              onTap: () {
+                navigatorService.pushNamed("/detailView", arguments: ProjectString.fragrances.projectToString());
+              },
+            ),
             viewListWB(ProjectString.fragrances.projectToString()),
 
             // Sale Card3
@@ -103,14 +104,12 @@ class _HomeViewState extends State<HomeView> with ProductLwbGwbMixin {
 
             // Furniture Categories
             InfoText(
-                text: d.infoTextFurnitureText,
-                buttonText: d.infoTextButtonText,
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DetailView(filterText: ProjectString.furniture.projectToString())));
-                }),
+              text: d.infoTextFurnitureText,
+              buttonText: d.infoTextButtonText,
+              onTap: () {
+                navigatorService.pushNamed("/detailView", arguments: ProjectString.furniture.projectToString());
+              },
+            ),
             viewListWB(ProjectString.furniture.projectToString()),
           ],
         ),

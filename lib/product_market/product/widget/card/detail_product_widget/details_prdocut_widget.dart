@@ -52,6 +52,10 @@ class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+        actions: const [],
+      ),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -137,7 +141,9 @@ class DetailsProductWidget extends StatelessWidget with ImageZoomMixin {
           onTap: () {
             imageZoom(context, image);
           },
-          child: Container(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.43,
             child: Image.network(image, fit: BoxFit.cover),
           ),
         ),

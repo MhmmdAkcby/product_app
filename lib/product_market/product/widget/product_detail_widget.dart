@@ -11,12 +11,13 @@ class ProductDetailWidget extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
+    final int? filterId = ModalRoute.of(context)?.settings.arguments as int?;
     return Scaffold(
       appBar: AppBar(
         title: Text(title.toUpperCase()),
       ),
       body: ProductLwbWidget(
-        filterId: productId,
+        filterId: filterId,
       ),
     );
   }
