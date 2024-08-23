@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
-import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
+
+import '../mixin/categories_mixin.dart';
 
 class InfoText extends StatelessWidget {
   const InfoText({
     super.key,
     required this.text,
-    required this.buttonText,
-    required this.onTap,
+    this.buttonText,
+    this.onTap,
   });
   final String text;
-  final String buttonText;
-  final Function() onTap;
+  final String? buttonText;
+  final Function()? onTap;
   final double fontSize = 30;
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class InfoText extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(text, style: textTheme(context, ProjectColor.darkColor(), fontSize, FontWeight.bold)),
-            TextButton(onPressed: onTap, child: Text(buttonText))
+            TextButton(onPressed: onTap, child: Text(buttonText ?? ''))
           ],
         ),
       ),

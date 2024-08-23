@@ -41,7 +41,7 @@ class _CartViewState extends CartSate<CartView> with AlertMixin {
               color: ProjectColor.whiteColor(),
               child: _showProduct(product),
             )),
-        if (cartItems.isNotEmpty) _totalPrice(context, totalPrice),
+        if (cartItems.isNotEmpty) _totalPrice(context: context, totalPrice: totalPrice),
       ],
     );
   }
@@ -56,29 +56,29 @@ class _CartViewState extends CartSate<CartView> with AlertMixin {
       trailing: IconButton(
           onPressed: () {
             showAlertMixin(
-              context,
-              d!.alertInfoText,
-              _alertButton(product),
+              context: context,
+              child: _alertButton(product: product),
+              data: d!.alertInfoText,
             );
           },
           icon: const Icon(Icons.delete)),
     );
   }
 
-  Widget _alertButton(Products product) {
+  Widget _alertButton({required Products product}) {
     var d = AppLocalizations.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         _textButton(
-          d!.cancelButtonText,
-          () {
+          texData: d!.cancelButtonText,
+          onPressed: () {
             navigatorService.goBack();
           },
         ),
         _textButton(
-          d.deleteButtonText,
-          () {
+          texData: d.deleteButtonText,
+          onPressed: () {
             deleteFunction(product);
             showToast();
             navigatorService.goBack();
@@ -88,14 +88,14 @@ class _CartViewState extends CartSate<CartView> with AlertMixin {
     );
   }
 
-  Widget _textButton(String texData, Function()? onPressed) {
+  Widget _textButton({required String texData, required Function()? onPressed}) {
     return TextButton(
       onPressed: onPressed,
       child: Text(texData),
     );
   }
 
-  Widget _totalPrice(BuildContext context, double totalPrice) {
+  Widget _totalPrice({required BuildContext context, required double totalPrice}) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Card(
@@ -103,7 +103,7 @@ class _CartViewState extends CartSate<CartView> with AlertMixin {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _priceText(totalPrice),
+            _priceText(totalPrice: totalPrice),
             _myButton(),
           ],
         ),
@@ -111,7 +111,7 @@ class _CartViewState extends CartSate<CartView> with AlertMixin {
     );
   }
 
-  Widget _priceText(double totalPrice) {
+  Widget _priceText({required double totalPrice}) {
     var d = AppLocalizations.of(context);
     return Padding(
       padding: const _WidgetPadding.all(),

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/model/product_model.dart';
+import 'package:product_app/product_market/product/mixin/categories_mixin.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/mixin/image_zoom_mixin.dart';
 import 'package:product_app/product_market/product/widget/card/detail_product_widget/detail_product_state.dart';
-import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:product_app/product_market/product/widget/my_button.dart';
 
@@ -71,7 +71,7 @@ class _DetailsProductWidgetState extends DetailProductState<DetailsProductWidget
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _imageNetwork(context, widget.image),
+                  _imageNetwork(context: context, image: widget.image),
                   _productDescription(context),
                   _showProductInfo(context),
                   _showReviews(context),
@@ -81,7 +81,7 @@ class _DetailsProductWidgetState extends DetailProductState<DetailsProductWidget
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: _bottomPriceAndRatingContainer(context, widget.price, widget.rating),
+            child: _bottomPriceAndRatingContainer(context: context, price: widget.price, rating: widget.rating),
           ),
         ],
       ),
@@ -97,7 +97,7 @@ class _DetailsProductWidgetState extends DetailProductState<DetailsProductWidget
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _productTexts(context, widget.title),
+            _productTexts(context: context, text: widget.title),
             const Divider(),
             _descriptionText(context),
           ],
@@ -110,13 +110,13 @@ class _DetailsProductWidgetState extends DetailProductState<DetailsProductWidget
     final isAllTextShow = context.watch<ProductCubit>().state.isAllTextShow;
     return Column(
       children: [
-        _productTexts(context, widget.description),
-        _textButton(context, isAllTextShow),
+        _productTexts(context: context, text: widget.description),
+        _textButton(context: context, isAllTextShow: isAllTextShow),
       ],
     );
   }
 
-  Widget _textButton(BuildContext context, bool isAllTextShow) {
+  Widget _textButton({required BuildContext context, required bool isAllTextShow}) {
     var d = AppLocalizations.of(context);
     return TextButton(
       onPressed: () {
@@ -126,7 +126,7 @@ class _DetailsProductWidgetState extends DetailProductState<DetailsProductWidget
     );
   }
 
-  Widget _productTexts(BuildContext context, String text) {
+  Widget _productTexts({required BuildContext context, required String text}) {
     final isAllTextShow = context.watch<ProductCubit>().state.isAllTextShow;
 
     return Padding(
@@ -139,7 +139,7 @@ class _DetailsProductWidgetState extends DetailProductState<DetailsProductWidget
     );
   }
 
-  Widget _imageNetwork(BuildContext context, String image) {
+  Widget _imageNetwork({required BuildContext context, required String image}) {
     var d = AppLocalizations.of(context);
     return Stack(
       children: [
@@ -161,7 +161,8 @@ class _DetailsProductWidgetState extends DetailProductState<DetailsProductWidget
     );
   }
 
-  Widget _bottomPriceAndRatingContainer(BuildContext context, double price, double rating) {
+  Widget _bottomPriceAndRatingContainer(
+      {required BuildContext context, required double price, required double rating}) {
     var d = AppLocalizations.of(context);
     return Container(
       height: MediaQuery.of(context).size.height * _WidgetSize().bottomPriceAndRatingContainerHeight,

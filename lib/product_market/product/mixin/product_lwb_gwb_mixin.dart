@@ -49,7 +49,7 @@ class ProductBuilderCard extends StatelessWidget with ProductCardMixin {
                   ),
                   itemCount: filteredProducts.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return cardMixin(context, filteredProducts[index]);
+                    return cardMixin(context: context, model: filteredProducts[index]);
                   },
                 )
               : ListView.builder(
@@ -57,7 +57,7 @@ class ProductBuilderCard extends StatelessWidget with ProductCardMixin {
                   shrinkWrap: true,
                   itemCount: filteredProducts.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return cardMixin(context, filteredProducts[index]);
+                    return cardMixin(context: context, model: filteredProducts[index]);
                   },
                 );
         },

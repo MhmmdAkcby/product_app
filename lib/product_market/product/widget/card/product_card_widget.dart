@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:product_app/product_market/product/mixin/categories_mixin.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
-
-import '../draw_widget/naw_drawer_widget.dart';
 
 class ProductCardWidget extends StatelessWidget {
   const ProductCardWidget(
@@ -39,7 +38,7 @@ class ProductCardWidget extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                _priceAndRatingInfoText(context, price.toString(), rating.toString()),
+                _priceAndRatingInfoText(context: context, price: price.toString(), rating: rating.toString()),
               ],
             ),
           ),
@@ -49,7 +48,7 @@ class ProductCardWidget extends StatelessWidget {
   }
 }
 
-Padding _priceAndRatingInfoText(BuildContext context, String price, String rating) {
+Widget _priceAndRatingInfoText({required BuildContext context, required String price, required String rating}) {
   return Padding(
     padding: const _WidgetPadding.only(),
     child: Column(

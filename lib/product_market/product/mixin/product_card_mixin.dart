@@ -5,7 +5,7 @@ import 'package:product_app/product_market/product/navigator/navigator_service.d
 import 'package:product_app/product_market/product/widget/card/product_card_widget.dart';
 
 mixin ProductCardMixin {
-  Widget cardMixin(BuildContext context, Products? model) {
+  Widget cardMixin({required BuildContext context, required Products? model}) {
     return _ProductListBuilderCard(
       model: model,
     );

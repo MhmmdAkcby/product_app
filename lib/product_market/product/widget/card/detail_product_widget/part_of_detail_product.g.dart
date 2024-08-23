@@ -37,7 +37,7 @@ Widget _priceAndRaiting(AppLocalizations? d, double price, BuildContext context,
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      _buildRatingStars(rating),
+      _buildRatingStars(rating: rating),
       SizedBox(width: _WidgetSize().sizedBoxWidth),
       Text(
         '${d!.price}: \$$price',
@@ -68,7 +68,7 @@ Widget _myButton(String data, Color color) {
 }
 
 // raiting stars
-Widget _buildRatingStars(double rating) {
+Widget _buildRatingStars({required double rating}) {
   int fullStars = rating.floor();
   int emptyStars = 5 - fullStars;
   return Row(

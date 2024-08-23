@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:product_app/product_market/cubit/product_cubit.dart';
-import 'package:product_app/product_market/cubit/product_cubit_state.dart';
+import 'package:product_app/product_market/product/mixin/categories_mixin.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/utils/project_string/project_string.dart';
 import 'package:product_app/product_market/product/mixin/product_lwb_gwb_mixin.dart';
-import 'package:product_app/product_market/product/widget/card/circular_card_widget.dart';
 import 'package:product_app/product_market/product/widget/card/sale_card_widget.dart';
-import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
 import 'package:product_app/product_market/product/widget/info_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:product_app/product_market/view/detail/detail_view.dart';
 import 'package:product_app/product_market/view/home/home_state.dart';
 part 'home.g.dart';
 
@@ -37,7 +32,7 @@ class _HomeViewState extends HomeState<HomeView> with ProductLwbGwbMixin {
               onTap: () {},
             ),
             // Categories
-            InfoText(text: d.categoriesHomeViewText, buttonText: d.infoTextButtonText, onTap: () {}),
+            InfoText(text: d.categoriesHomeViewText),
             const _ProductCategory(),
 
             // Beauty Categories

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 mixin AlertMixin {
-  Future<T?> showAlertMixin<T>(BuildContext context, String data, Widget child) {
+  Future<T?> showAlertMixin<T>({required BuildContext context, required String data, required Widget child}) {
     return showDialog(
       context: context,
       builder: (context) {
