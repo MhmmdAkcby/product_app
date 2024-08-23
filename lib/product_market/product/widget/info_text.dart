@@ -12,6 +12,7 @@ class InfoText extends StatelessWidget {
   final String text;
   final String buttonText;
   final Function() onTap;
+  final double fontSize = 30;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,7 +22,7 @@ class InfoText extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(text, style: textTheme(context, ProjectColor.darkColor(), 30, FontWeight.bold)),
+            Text(text, style: textTheme(context, ProjectColor.darkColor(), fontSize, FontWeight.bold)),
             TextButton(onPressed: onTap, child: Text(buttonText))
           ],
         ),

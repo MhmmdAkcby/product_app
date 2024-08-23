@@ -32,7 +32,14 @@
     "search" : "Ara...",
     "totalPrice":"Toplam Fiyat",
     "noItem":"Sepet boş",
-    "myCart":"Sepetim"
+    "myCart":"Sepetim",
+    "productDeleteInfo":"Ürün silindi.",
+    "alertInfoText":"Emin misin?",
+    "cancelButtonText" : "Geri",
+    "deleteButtonText" : "Sil",
+    "alertInfo":"Ürün sepete eklendi."
+
+
 
 
 }

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/cubit/product_cubit_state.dart';
-import 'package:product_app/product_market/product/navigator/navigator_service.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/utils/project_string/project_string.dart';
 import 'package:product_app/product_market/product/mixin/product_lwb_gwb_mixin.dart';
@@ -13,6 +11,7 @@ import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer
 import 'package:product_app/product_market/product/widget/info_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:product_app/product_market/view/detail/detail_view.dart';
+import 'package:product_app/product_market/view/home/home_state.dart';
 part 'home.g.dart';
 
 class HomeView extends StatefulWidget {
@@ -22,18 +21,7 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-final GetIt _getIt = GetIt.instance;
-
-late NavigationService navigatorService;
-
-class _HomeViewState extends State<HomeView> with ProductLwbGwbMixin {
-  @override
-  void initState() {
-    super.initState();
-    context.read<ProductCubit>().fetchProductItemAdvance();
-    navigatorService = _getIt<NavigationService>();
-  }
-
+class _HomeViewState extends HomeState<HomeView> with ProductLwbGwbMixin {
   @override
   Widget build(BuildContext context) {
     var d = AppLocalizations.of(context);

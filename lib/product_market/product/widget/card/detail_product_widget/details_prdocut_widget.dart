@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/model/product_model.dart';
-import 'package:product_app/product_market/product/navigator/navigator_service.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/mixin/image_zoom_mixin.dart';
+import 'package:product_app/product_market/product/widget/card/detail_product_widget/detail_product_state.dart';
 import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:product_app/product_market/product/widget/my_button.dart';
@@ -58,17 +57,7 @@ class DetailsProductWidget extends StatefulWidget {
   State<DetailsProductWidget> createState() => _DetailsProductWidgetState();
 }
 
-class _DetailsProductWidgetState extends State<DetailsProductWidget> with ImageZoomMixin {
-  final GetIt _getIt = GetIt.instance;
-
-  late NavigationService _navigatorService;
-
-  @override
-  void initState() {
-    super.initState();
-    _navigatorService = _getIt<NavigationService>();
-  }
-
+class _DetailsProductWidgetState extends DetailProductState<DetailsProductWidget> with ImageZoomMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -205,7 +194,8 @@ class _DetailsProductWidgetState extends State<DetailsProductWidget> with ImageZ
 
           context.read<ProductCubit>().addToCart(product);
 
-          _navigatorService.pushReplacementNamed("/cart", arguments: widget.id);
+          navigatorService.pushReplacementNamed("/cart", arguments: widget.id);
+          alertMessage();
         },
       ),
     );

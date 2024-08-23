@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:get_it/get_it.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/model/product_model.dart';
-import 'package:product_app/product_market/product/navigator/navigator_service.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
+import 'package:product_app/product_market/view/search/search_state.dart';
 
 part 'search.g.dart';
 
@@ -16,19 +15,7 @@ class SearchView extends StatefulWidget {
   State<SearchView> createState() => _SearchViewState();
 }
 
-class _SearchViewState extends State<SearchView> {
-  String query = "";
-
-  final GetIt _getIt = GetIt.instance;
-
-  late NavigationService navigatorService;
-
-  @override
-  void initState() {
-    super.initState();
-    navigatorService = _getIt<NavigationService>();
-  }
-
+class _SearchViewState extends SearchState<SearchView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

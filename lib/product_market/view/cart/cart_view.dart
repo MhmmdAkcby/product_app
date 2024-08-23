@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/model/product_model.dart';
+import 'package:product_app/product_market/product/mixin/alert_mixin.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/widget/my_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:product_app/product_market/view/cart/cart_sate.dart';
 
 class CartView extends StatefulWidget {
   final int? filterId;
@@ -14,7 +16,7 @@ class CartView extends StatefulWidget {
   State<CartView> createState() => _CartViewState();
 }
 
-class _CartViewState extends State<CartView> {
+class _CartViewState extends CartSate<CartView> with AlertMixin {
   @override
   Widget build(BuildContext context) {
     final cartItems = context.watch<ProductCubit>().state.cartItems;
@@ -45,6 +47,7 @@ class _CartViewState extends State<CartView> {
   }
 
   Widget _showProduct(Products product) {
+    var d = AppLocalizations.of(context);
     return ListTile(
       leading:
           Image.network(product.images?.first ?? '', width: _WidgetSize().imageSize, height: _WidgetSize().imageSize),
@@ -52,14 +55,44 @@ class _CartViewState extends State<CartView> {
       subtitle: Text('\$${product.price.toString()}'),
       trailing: IconButton(
           onPressed: () {
-            _deleteFunction(product);
+            showAlertMixin(
+              context,
+              d!.alertInfoText,
+              _alertButton(product),
+            );
           },
           icon: const Icon(Icons.delete)),
     );
   }
 
-  void _deleteFunction(Products product) {
-    context.read<ProductCubit>().removeProduct(product);
+  Widget _alertButton(Products product) {
+    var d = AppLocalizations.of(context);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        _textButton(
+          d!.cancelButtonText,
+          () {
+            navigatorService.goBack();
+          },
+        ),
+        _textButton(
+          d.deleteButtonText,
+          () {
+            deleteFunction(product);
+            showToast();
+            navigatorService.goBack();
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _textButton(String texData, Function()? onPressed) {
+    return TextButton(
+      onPressed: onPressed,
+      child: Text(texData),
+    );
   }
 
   Widget _totalPrice(BuildContext context, double totalPrice) {

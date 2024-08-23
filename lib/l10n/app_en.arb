@@ -30,9 +30,14 @@
     "anonymous" : "Anonymous",
     "noComment" : "No comment",
     "search" : "Search...", 
-    "totalPrice":"Total Price",
-    "noItem":"No items in the cart",
-    "myCart":"My Cart"
+    "totalPrice" : "Total Price",
+    "noItem" : "No items in the cart",
+    "myCart" : "My Cart",
+    "productDeleteInfo": "Product deleted.",
+    "alertInfoText" : "Are you sure?",
+    "cancelButtonText" : "Cancel",
+    "deleteButtonText" : "Delete",
+    "alertInfo":"The product was added to the basket"
 
    
 

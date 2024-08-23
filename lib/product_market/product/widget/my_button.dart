@@ -30,12 +30,16 @@ class MyButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
         child: Text(
           data,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: textColor,
-                fontSize: fontSize,
-              ),
+          style: _textTheme(context, textColor, fontSize),
         ),
       ),
     );
+  }
+
+  TextStyle? _textTheme(BuildContext context, Color textColor, double fontSize) {
+    return Theme.of(context).textTheme.bodyMedium?.copyWith(
+          color: textColor,
+          fontSize: fontSize,
+        );
   }
 }

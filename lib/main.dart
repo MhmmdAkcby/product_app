@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/product/navigator/navigator_service.dart';
+import 'package:product_app/product_market/product/service/alert_service.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/service/project_service.dart';
 import 'package:product_app/product_market/service/product_service.dart';
@@ -20,6 +21,7 @@ Future<void> setUp() async {
 
 Future<void> navigatorService() async {
   GetIt.instance.registerLazySingleton(() => NavigationService());
+  GetIt.instance.registerLazySingleton(() => AlertService());
 }
 
 class MyApp extends StatelessWidget with ProjectServiceMixin {
