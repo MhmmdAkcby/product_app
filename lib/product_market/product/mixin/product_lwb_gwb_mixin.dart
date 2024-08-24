@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/cubit/product_cubit_state.dart';
 import 'package:product_app/product_market/product/mixin/product_card_mixin.dart';
+import 'package:product_app/product_market/product/utils/lottie/loading_lottie.dart';
 
 mixin ProductLwbGwbMixin {
   Widget viewGridWB(String filterText) {
@@ -37,7 +38,7 @@ class ProductBuilderCard extends StatelessWidget with ProductCardMixin {
       child: BlocBuilder<ProductCubit, ProductCubitState>(
         builder: (context, state) {
           if (state.isLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const LoadingLottie();
           }
           final filteredProducts = state.item!.where((product) => product.category == filterText).toList();
 

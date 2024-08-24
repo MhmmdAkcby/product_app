@@ -34,14 +34,16 @@
     "noItem" : "No items in the cart",
     "myCart" : "My Cart",
     "productDeleteInfo": "Product deleted.",
-    "alertInfoText" : "Are you sure?",
+    "alertInfoText" : "Do you want to delete?",
     "cancelButtonText" : "Cancel",
     "deleteButtonText" : "Delete",
     "alertInfo":"The product was added to the basket",
     "home" : "home",
     "tabSearch" : "search",
     "cart":"cart",
-    "profile": "profile"
+    "profile": "profile",
+    "loading":"Loading..."
+
 
    
 

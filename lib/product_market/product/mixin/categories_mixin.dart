@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/cubit/product_cubit_state.dart';
-import 'package:product_app/product_market/product/utils/project_string/project_string.dart';
+import 'package:product_app/product_market/product/utils/lottie/loading_lottie.dart';
+import 'package:product_app/product_market/product/utils/project_string.dart';
 import 'package:product_app/product_market/product/widget/card/circular_card_widget.dart';
 import 'package:product_app/product_market/view/home/home_state.dart';
 
@@ -27,7 +28,7 @@ class _CategoriesState extends HomeState<_Categories> {
     return BlocBuilder<ProductCubit, ProductCubitState>(
       builder: (context, state) {
         if (state.isLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const LoadingLottie();
         }
 
         final uniqueCategories = state.item?.map((item) => item.category).toSet().toList() ?? [];

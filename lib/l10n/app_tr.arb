@@ -34,14 +34,15 @@
     "noItem":"Sepet boş",
     "myCart":"Sepetim",
     "productDeleteInfo":"Ürün silindi.",
-    "alertInfoText":"Emin misin?",
+    "alertInfoText":"Silinsin mi?",
     "cancelButtonText" : "Geri",
     "deleteButtonText" : "Sil",
     "alertInfo":"Ürün sepete eklendi.",
     "home" : "anasafa",
     "tabSearch" : "ara",
     "cart":"sepet",
-    "profile": "profil"
+    "profile": "profil",
+    "loading":"Yükleniyor..."
 
 
 

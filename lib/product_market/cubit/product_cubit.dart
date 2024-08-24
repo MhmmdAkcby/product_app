@@ -11,6 +11,8 @@ class ProductCubit extends Cubit<ProductCubitState> {
         super(const ProductCubitState());
 
   Future<void> fetchProductItemAdvance() async {
+    if (state.item != null && state.item!.isNotEmpty) return;
+
     emit(state.copyWith(isLoading: true));
     final response = await _productService.fetchProductItemAdvance();
     emit(state.copyWith(isLoading: false, item: response?.products ?? []));

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:product_app/product_market/product/mixin/categories_mixin.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
-import 'package:product_app/product_market/product/utils/project_string/project_string.dart';
+import 'package:product_app/product_market/product/utils/project_string.dart';
 import 'package:product_app/product_market/product/mixin/product_lwb_gwb_mixin.dart';
 import 'package:product_app/product_market/product/widget/card/sale_card_widget.dart';
 import 'package:product_app/product_market/product/widget/info_text.dart';

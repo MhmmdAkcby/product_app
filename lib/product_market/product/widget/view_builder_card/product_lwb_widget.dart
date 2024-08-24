@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:product_app/product_market/product/utils/lottie/loading_lottie.dart';
 
 import 'package:product_app/product_market/product/widget/card/detail_product_widget/details_prdocut_widget.dart';
 
@@ -33,7 +34,7 @@ class _ProductLwbWidgetState extends State<ProductLwbWidget> {
       child: BlocBuilder<ProductCubit, ProductCubitState>(
         builder: (context, state) {
           if (state.isLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const LoadingLottie();
           }
 
           final product = state.item!.firstWhere((product) => product.id == filterId);
