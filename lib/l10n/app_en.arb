@@ -37,7 +37,11 @@
     "alertInfoText" : "Are you sure?",
     "cancelButtonText" : "Cancel",
     "deleteButtonText" : "Delete",
-    "alertInfo":"The product was added to the basket"
+    "alertInfo":"The product was added to the basket",
+    "home" : "home",
+    "tabSearch" : "search",
+    "cart":"cart",
+    "profile": "profile"
 
    
 

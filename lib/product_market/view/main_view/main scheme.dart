@@ -42,6 +42,7 @@ class _MainSchemeState extends GenericMainScheme<MainScheme> {
   }
 
   TabBar _tabbarMethod() {
+    var d = AppLocalizations.of(context);
     return TabBar(
       labelColor: ProjectColor.flushOrange(),
       padding: EdgeInsets.zero,
@@ -50,7 +51,7 @@ class _MainSchemeState extends GenericMainScheme<MainScheme> {
       controller: _tabController,
       tabs: _MyTabbarName.values
           .map((e) => Tab(
-                text: e.name.toUpperCase(),
+                text: e.getLocalizedName(d!).toUpperCase(),
                 icon: Icon(e.icons()),
               ))
           .toList(),

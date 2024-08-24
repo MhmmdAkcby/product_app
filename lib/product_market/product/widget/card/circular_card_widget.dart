@@ -35,9 +35,12 @@ class CircularCardWidget extends StatelessWidget {
             ),
           ),
         ),
-        Text(
-          data,
-          style: textTheme(context, ProjectColor.darkColor(), _WidgetSize().dataSize, FontWeight.bold),
+        Padding(
+          padding: const _MyEdgeInsets.onlyLeft(),
+          child: Text(
+            data,
+            style: textTheme(context, ProjectColor.darkColor(), _WidgetSize().dataSize, FontWeight.bold),
+          ),
         ),
       ],
     );
@@ -46,13 +49,13 @@ class CircularCardWidget extends StatelessWidget {
 
 class _MyEdgeInsets extends EdgeInsets {
   const _MyEdgeInsets.all() : super.all(4);
-  const _MyEdgeInsets.bottom() : super.only(bottom: 120);
+  const _MyEdgeInsets.onlyLeft() : super.only(left: 8.0);
 }
 
 class _WidgetSize {
   final double containerSize = 0.10;
   final double radius = 18;
   final double elevation = 18;
-  final double textFontSize = 25;
+  final double textFontSize = 30;
   final double dataSize = 15;
 }

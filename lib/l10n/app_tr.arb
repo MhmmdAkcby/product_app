@@ -37,7 +37,12 @@
     "alertInfoText":"Emin misin?",
     "cancelButtonText" : "Geri",
     "deleteButtonText" : "Sil",
-    "alertInfo":"Ürün sepete eklendi."
+    "alertInfo":"Ürün sepete eklendi.",
+    "home" : "anasafa",
+    "tabSearch" : "ara",
+    "cart":"sepet",
+    "profile": "profil"
+
 
 
 

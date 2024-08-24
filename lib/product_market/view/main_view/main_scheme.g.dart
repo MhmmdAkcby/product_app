@@ -50,4 +50,17 @@ extension _MyTabbarNameExtension on _MyTabbarName {
         return Icons.person;
     }
   }
+
+  String getLocalizedName(AppLocalizations localizations) {
+    switch (this) {
+      case _MyTabbarName.home:
+        return localizations.home;
+      case _MyTabbarName.search:
+        return localizations.tabSearch;
+      case _MyTabbarName.cart:
+        return localizations.cart;
+      case _MyTabbarName.profile:
+        return localizations.profile;
+    }
+  }
 }
