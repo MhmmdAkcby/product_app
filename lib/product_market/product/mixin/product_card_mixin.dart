@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:product_app/product_market/model/product_model.dart';
-import 'package:product_app/product_market/product/navigator/navigator_service.dart';
+import 'package:product_app/product_market/product/utils/navigator/navigator_service.dart';
 import 'package:product_app/product_market/product/widget/card/product_card_widget.dart';
 
 mixin ProductCardMixin {

@@ -54,14 +54,18 @@ class _CartViewState extends CartSate<CartView> with AlertMixin {
       title: Text(product.title ?? ''),
       subtitle: Text('\$${product.price.toString()}'),
       trailing: IconButton(
-          onPressed: () {
-            showAlertMixin(
-              context: context,
-              child: _alertButton(product: product),
-              data: d!.alertInfoText,
-            );
-          },
-          icon: const Icon(Icons.delete)),
+        onPressed: () {
+          showAlertMixin(
+            context: context,
+            child: _alertButton(product: product),
+            data: d!.alertInfoText,
+          );
+        },
+        icon: const Icon(Icons.delete),
+      ),
+      onTap: () {
+        navigatorService.pushNamed("/prdLWB", arguments: product.id ?? 0);
+      },
     );
   }
 

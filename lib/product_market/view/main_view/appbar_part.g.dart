@@ -17,10 +17,14 @@ class _PartAppBar extends StatelessWidget implements PreferredSizeWidget {
           d.welcomeText,
           style: _textTheme(context, ProjectColor.darkColor(), FontWeight.w300, _WidgetSize().welcomeTextSize),
         ),
-        const Padding(
-          padding: _AppBarPaddinng.all(),
+        Padding(
+          padding: const _AppBarPaddinng.all(),
           child: CircleAvatar(
-            child: Icon(Icons.person),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserView()));
+                },
+                icon: const Icon(Icons.person)),
           ),
         ),
       ],

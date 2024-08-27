@@ -10,7 +10,8 @@ class MyButton extends StatelessWidget {
       required this.width,
       required this.textColor,
       required this.borderRadius,
-      required this.fontSize});
+      required this.fontSize,
+      this.elevation});
   final Function() onTap;
   final String data;
   final Color color;
@@ -19,12 +20,14 @@ class MyButton extends StatelessWidget {
   final double width;
   final double borderRadius;
   final double fontSize;
+  final double? elevation;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * height,
       width: MediaQuery.of(context).size.width * width,
       child: MaterialButton(
+        elevation: elevation,
         onPressed: onTap,
         color: color,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),

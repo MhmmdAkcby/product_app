@@ -4,7 +4,7 @@ import 'package:delightful_toast/toast/utils/enums.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:product_app/product_market/product/navigator/navigator_service.dart';
+import 'package:product_app/product_market/product/utils/navigator/navigator_service.dart';
 
 class AlertService {
   final GetIt _getIt = GetIt.instance;

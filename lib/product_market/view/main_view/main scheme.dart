@@ -5,6 +5,7 @@ import 'package:product_app/product_market/view/cart/cart_view.dart';
 import 'package:product_app/product_market/view/home/home_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:product_app/product_market/view/search/search_view.dart';
+import 'package:product_app/product_market/view/user_detail/user_view.dart';
 
 part 'main_scheme.g.dart';
 part 'appbar_part.g.dart';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:product_app/auth/view/login_view.dart';
 import 'package:product_app/product_market/product/widget/view_builder_card/product_lwb_widget.dart';
 import 'package:product_app/product_market/view/cart/cart_view.dart';
 import 'package:product_app/product_market/view/detail/detail_view.dart';
@@ -9,6 +10,7 @@ class NavigationService {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
   final Map<String, Widget Function(BuildContext)> _routes = {
+    "/login": (context) => const LoginView(),
     "/main": (context) => const MainScheme(),
     "/home": (context) => const HomeView(),
     "/prdLWB": (context) => const ProductLwbWidget(),
@@ -26,6 +28,14 @@ class NavigationService {
 
   void pushReplacementNamed(String routeName, {Object? arguments}) {
     _navigatorKey.currentState?.pushReplacementNamed(routeName, arguments: arguments);
+  }
+
+  void pushNamedAndRemoveUntil(String routeName, {Object? arguments}) {
+    _navigatorKey.currentState?.pushNamedAndRemoveUntil(
+      routeName,
+      (route) => false,
+      arguments: arguments,
+    );
   }
 
   void goBack() {

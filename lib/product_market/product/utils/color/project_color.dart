@@ -15,4 +15,5 @@ class ProjectColor extends Color {
   ProjectColor.searchDecorationColor() : super.fromRGBO(158, 158, 158, 1);
   ProjectColor.redColor() : super.fromRGBO(244, 67, 54, 1);
   ProjectColor.greenColor() : super.fromRGBO(76, 175, 80, 1);
+  ProjectColor.blueColor() : super.fromRGBO(34, 69, 151, 1);
 }

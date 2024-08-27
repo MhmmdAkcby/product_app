@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:product_app/product_market/product/navigator/navigator_service.dart';
+import 'package:product_app/product_market/product/utils/navigator/navigator_service.dart';
 import 'package:product_app/product_market/product/service/alert_service.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/widget/card/detail_product_widget/details_prdocut_widget.dart';
