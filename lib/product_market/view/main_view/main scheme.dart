@@ -38,7 +38,7 @@ class _MainSchemeState extends GenericMainScheme<MainScheme> {
     return TabBarView(
       physics: const NeverScrollableScrollPhysics(),
       controller: _tabController,
-      children: const [HomeView(), SearchView(), CartView(), Placeholder()],
+      children: const [HomeView(), SearchView(), CartView(), UserView()],
     );
   }
 
@@ -68,8 +68,8 @@ class _WidgetSize {
   final double tabElevation = 20;
 }
 
-class _AppBarPaddinng extends EdgeInsets {
-  const _AppBarPaddinng.all() : super.all(8.0);
+class _AppBarPadding extends EdgeInsets {
+  const _AppBarPadding.all() : super.all(8.0);
 }
 
 abstract class GenericMainScheme<T extends MainScheme> extends State<T> with TickerProviderStateMixin {

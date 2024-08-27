@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/model/product_model.dart';
 import 'package:product_app/product_market/product/mixin/alert_mixin.dart';
+import 'package:product_app/product_market/product/mixin/categories_mixin.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/widget/my_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -129,14 +130,15 @@ class _CartViewState extends CartSate<CartView> with AlertMixin {
   Widget _myButton() {
     var d = AppLocalizations.of(context);
     return MyButton(
-      data: d!.buy,
-      textColor: ProjectColor.whiteColor(),
-      fontSize: _WidgetSize().buttonFontSize,
       width: _WidgetSize().myButtonWidth,
       height: _WidgetSize().myButtonHeight,
       color: ProjectColor.flushOrange(),
       borderRadius: _WidgetSize().borderRadius,
       onTap: () {},
+      child: Text(
+        d!.buy,
+        style: textTheme(context, ProjectColor.whiteColor(), _WidgetSize().buttonFontSize, FontWeight.normal),
+      ),
     );
   }
 }

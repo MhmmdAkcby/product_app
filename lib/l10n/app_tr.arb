@@ -42,7 +42,16 @@
     "tabSearch" : "ara",
     "cart":"sepet",
     "profile": "profil",
-    "loading":"Yükleniyor..."
+    "loading":"Yükleniyor...",
+     "error":"Hata",
+    "ok":"Tamam",
+    "welcome": "Tekrar Hoşgeldin!",
+    "userName" : "Kullanıcı adı",
+    "password" : "Şifre",
+    "login" : "Giriş",
+    "logout":"Çıkış Yap"
+
+
 
 
 

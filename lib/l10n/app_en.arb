@@ -40,9 +40,18 @@
     "alertInfo":"The product was added to the basket",
     "home" : "home",
     "tabSearch" : "search",
-    "cart":"cart",
-    "profile": "profile",
-    "loading":"Loading..."
+    "cart" : "cart",
+    "profile" : "profile",
+    "loading" : "Loading...",
+    "error" : "Error",
+    "ok" : "Ok",
+    "welcome" : "Welcome Back!",
+    "userName" : "Username",
+    "password" : "Password",
+    "login" : "Login",
+    "logout":"Logout"
+    
+    
 
 
    

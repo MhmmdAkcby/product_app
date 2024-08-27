@@ -173,14 +173,14 @@ class _DetailsProductWidgetState extends DetailProductState<DetailsProductWidget
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _priceAndRaiting(d, price, context, rating),
-          _myButton(d!.buy, ProjectColor.flushOrange()),
-          _addCartButton(),
+          _myButton(context, d!.buy, ProjectColor.flushOrange()),
+          _addCartButton(context),
         ],
       ),
     );
   }
 
-  Widget _addCartButton() {
+  Widget _addCartButton(BuildContext context) {
     return Card(
       child: IconButton(
         icon: const Icon(Icons.shopping_cart_rounded),
@@ -192,7 +192,6 @@ class _DetailsProductWidgetState extends DetailProductState<DetailsProductWidget
             price: widget.price,
             rating: widget.rating,
           );
-
           context.read<ProductCubit>().addToCart(product);
 
           navigatorService.pushReplacementNamed("/cart", arguments: widget.id);

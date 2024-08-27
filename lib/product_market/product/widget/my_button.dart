@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  const MyButton(
-      {super.key,
-      required this.onTap,
-      required this.data,
-      required this.color,
-      required this.height,
-      required this.width,
-      required this.textColor,
-      required this.borderRadius,
-      required this.fontSize,
-      this.elevation});
+  const MyButton({
+    super.key,
+    required this.onTap,
+    required this.child,
+    required this.color,
+    required this.height,
+    required this.width,
+    required this.borderRadius,
+    this.elevation,
+  });
+
   final Function() onTap;
-  final String data;
+  final Widget child;
   final Color color;
-  final Color textColor;
   final double height;
   final double width;
   final double borderRadius;
-  final double fontSize;
   final double? elevation;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -31,10 +30,7 @@ class MyButton extends StatelessWidget {
         onPressed: onTap,
         color: color,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
-        child: Text(
-          data,
-          style: _textTheme(context, textColor, fontSize),
-        ),
+        child: child,
       ),
     );
   }

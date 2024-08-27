@@ -54,11 +54,12 @@ BoxDecoration _bottomPriceRaitingContainerDecoration() {
 }
 
 //button
-Widget _myButton(String data, Color color) {
+Widget _myButton(BuildContext context, String data, Color color) {
   return MyButton(
-    data: data,
-    textColor: ProjectColor.whiteColor(),
-    fontSize: _WidgetSize().myButtonFontSize,
+    child: Text(
+      data,
+      style: textTheme(context, ProjectColor.whiteColor(), _WidgetSize().myButtonFontSize, FontWeight.normal),
+    ),
     width: _WidgetSize().myButtonWidth,
     height: _WidgetSize().myButtonHeight,
     color: color,

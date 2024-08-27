@@ -18,11 +18,11 @@ class _PartAppBar extends StatelessWidget implements PreferredSizeWidget {
           style: _textTheme(context, ProjectColor.darkColor(), FontWeight.w300, _WidgetSize().welcomeTextSize),
         ),
         Padding(
-          padding: const _AppBarPaddinng.all(),
+          padding: const _AppBarPadding.all(),
           child: CircleAvatar(
             child: IconButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserView()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const UserView()));
                 },
                 icon: const Icon(Icons.person)),
           ),

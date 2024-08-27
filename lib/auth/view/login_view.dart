@@ -5,9 +5,14 @@ import 'package:lottie/lottie.dart';
 import 'package:product_app/auth/cubit/login_cubit.dart';
 import 'package:product_app/auth/cubit/login_cubit_state.dart';
 import 'package:product_app/auth/view/login_view_state.dart';
+import 'package:product_app/product_market/product/mixin/alert_mixin.dart';
+import 'package:product_app/product_market/product/mixin/categories_mixin.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
 import 'package:product_app/product_market/product/utils/image_path.dart';
 import 'package:product_app/product_market/product/widget/my_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+part 'login.g.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -16,7 +21,7 @@ class LoginView extends StatefulWidget {
   State<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends LoginViewState<LoginView> {
+class _LoginViewState extends LoginViewState<LoginView> with AlertMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,19 +31,7 @@ class _LoginViewState extends LoginViewState<LoginView> {
           if (state.isAuthenticated) {
             navigatorService.pushNamed("/main");
           } else if (state.message != null && state.message!.isNotEmpty) {
-            showDialog(
-              context: context,
-              builder: (_) => CupertinoAlertDialog(
-                title: const Text('Error'),
-                content: Text(state.message!),
-                actions: [
-                  CupertinoDialogAction(
-                    child: const Text('Ok'),
-                    onPressed: () => navigatorService.goBack(),
-                  ),
-                ],
-              ),
-            );
+            _cupertinoAlert(context, state);
           }
         },
         builder: (context, state) {
@@ -48,14 +41,28 @@ class _LoginViewState extends LoginViewState<LoginView> {
     );
   }
 
+  Future<void> _cupertinoAlert(BuildContext context, LoginCubitState state) {
+    var d = AppLocalizations.of(context);
+    return showCupertinoMixin(
+      context: context,
+      title: d!.error,
+      message: state.message!,
+      child: CupertinoDialogAction(
+        child: Text(d.ok),
+        onPressed: () => navigatorService.goBack(),
+      ),
+    );
+  }
+
   Widget _buildUI(BuildContext context) {
+    var d = AppLocalizations.of(context);
     final cubit = context.read<LoginCubit>();
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
           children: [
             _infoText(
-              text: 'Welcome Back!',
+              text: d!.welcome,
               textStyle: _textStyle(fontWeight: FontWeight.bold, fontSize: _WidgetSize().fontSize),
             ),
             _myLottie(context),
@@ -66,11 +73,8 @@ class _LoginViewState extends LoginViewState<LoginView> {
     );
   }
 
-  SizedBox _myLottie(BuildContext context) => SizedBox(
-      height: MediaQuery.of(context).size.height * _WidgetSize().lottieHeight,
-      child: Lottie.asset(ImagePath.loginLottie.toImage()));
-
   Container _loginForm(BuildContext context, LoginCubit cubit) {
+    var d = AppLocalizations.of(context);
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * _WidgetSize().containerHeight,
@@ -82,13 +86,13 @@ class _LoginViewState extends LoginViewState<LoginView> {
           inputBox(
             controller: cubit.state.username!,
             isSecured: false,
-            hintText: 'UserName',
+            hintText: d!.userName,
             icon: Icons.supervised_user_circle_rounded,
           ),
           inputBox(
             controller: cubit.state.password!,
             isSecured: true,
-            hintText: 'Password',
+            hintText: d.password,
             icon: Icons.lock,
           ),
           SizedBox(height: _WidgetSize().sizedBoxHeight),
@@ -98,27 +102,12 @@ class _LoginViewState extends LoginViewState<LoginView> {
     );
   }
 
-  Widget inputBox({
-    required String hintText,
-    required TextEditingController controller,
-    required bool isSecured,
-    required IconData icon,
-  }) {
-    return Container(
-      padding: const _WidgetPadding.containerSymmetric(),
-      margin: const _WidgetPadding.allMargin(),
-      decoration: _inputBoxDecoration(),
-      child: _textField(controller: controller, isSecured: isSecured, hintText: hintText, icon: icon),
-    );
-  }
-
   Widget _myButton(BuildContext context) {
+    var d = AppLocalizations.of(context);
     final cubit = context.read<LoginCubit>();
+    final isLoading = context.watch<LoginCubit>().state.isLoading;
 
     return MyButton(
-      data: 'Login',
-      textColor: ProjectColor.whiteColor(),
-      fontSize: _WidgetSize().buttonFontSize,
       width: _WidgetSize().myButtonWidth,
       height: _WidgetSize().myButtonHeight,
       color: ProjectColor.flushOrange(),
@@ -127,64 +116,12 @@ class _LoginViewState extends LoginViewState<LoginView> {
       onTap: () async {
         await cubit.submit();
       },
+      child: isLoading
+          ? Center(child: CircularProgressIndicator(color: ProjectColor.whiteColor()))
+          : Text(
+              d!.login,
+              style: textTheme(context, ProjectColor.whiteColor(), _WidgetSize().buttonFontSize, FontWeight.normal),
+            ),
     );
   }
-
-  Widget _textField({
-    required TextEditingController controller,
-    required bool isSecured,
-    required String hintText,
-    required IconData icon,
-  }) {
-    return TextField(
-      controller: controller,
-      obscureText: isSecured,
-      decoration: InputDecoration(
-        border: InputBorder.none,
-        icon: Icon(icon, color: ProjectColor.flushOrange()),
-        hintText: hintText,
-        fillColor: ProjectColor.whiteColor(),
-        filled: true,
-        contentPadding: const _WidgetPadding.contentPadding(),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(_WidgetSize().enabledBorderRadius),
-          borderSide: BorderSide(color: ProjectColor.whiteColor(), width: _WidgetSize().enabledBorderSide),
-        ),
-      ),
-    );
-  }
-
-  Text _infoText({required String text, TextStyle? textStyle}) => Text(text, style: textStyle);
-
-  BoxDecoration _inputBoxDecoration() {
-    return BoxDecoration(
-      border: Border.all(color: ProjectColor.mortarGrey()),
-      borderRadius: BorderRadius.circular(_WidgetSize().borderRadius),
-    );
-  }
-
-  TextStyle _textStyle({required FontWeight fontWeight, required double fontSize}) =>
-      TextStyle(fontSize: fontSize, fontWeight: fontWeight);
-}
-
-class _WidgetSize {
-  final double borderRadius = 10;
-  final double fontSize = 40;
-  final double myButtonHeight = 0.065;
-  final double myButtonWidth = 1;
-  final double myButtonFontSize = 17;
-  final double buttonRadius = 10;
-  final double buttonFontSize = 18;
-  final double enabledBorderRadius = 5;
-  final double enabledBorderSide = 3;
-  final double myButtonElevation = 20;
-  final double sizedBoxHeight = 50;
-  final double lottieHeight = 0.3;
-  final double containerHeight = 0.5;
-}
-
-class _WidgetPadding extends EdgeInsets {
-  const _WidgetPadding.allMargin() : super.all(8.0);
-  const _WidgetPadding.containerSymmetric() : super.symmetric(horizontal: 15);
-  const _WidgetPadding.contentPadding() : super.fromLTRB(20.0, 10.0, 20.0, 10.0);
 }
