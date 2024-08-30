@@ -11,8 +11,19 @@ class AuthService {
     await prefs.setBool('isLoggedIn', isLoggedIn);
   }
 
+  Future<void> saveUserInfo(String username) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('username', username);
+  }
+
+  Future<String?> getUserInfo() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('username');
+  }
+
   Future<void> logout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('isLoggedIn');
+    await prefs.remove('username');
   }
 }

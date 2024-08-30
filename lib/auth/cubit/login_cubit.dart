@@ -4,7 +4,7 @@ import 'package:product_app/auth/cubit/login_cubit_state.dart';
 import 'package:product_app/auth/product/utils/string_extension.dart';
 import 'package:product_app/auth/service/auth_service.dart';
 import 'package:product_app/auth/service/login_service.dart';
-import 'package:product_app/auth/model/user.dart';
+import 'package:product_app/auth/model/login_model.dart';
 
 class LoginCubit extends Cubit<LoginCubitState> {
   final LoginService _loginService;
@@ -23,12 +23,13 @@ class LoginCubit extends Cubit<LoginCubitState> {
     }
 
     emit(state.copyWith(isLoading: true));
-    final user = User(username: username, password: password);
+    final user = LoginModel(username: username, password: password);
 
     try {
       final isAuthenticated = await _loginService.authenticateUser(user);
       if (isAuthenticated) {
         await _authService.saveLoginStatus(true);
+        await _authService.saveUserInfo(username);
         emit(state.copyWith(isAuthenticated: true, isLoading: false));
       } else {
         emit(state.copyWith(message: WaringString.waringMessageTwo.toStr(), isLoading: false));

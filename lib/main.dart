@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:product_app/auth/cubit/login_cubit.dart'; // Import LoginCubit
+import 'package:product_app/auth/cubit/user_cubit.dart';
 import 'package:product_app/auth/service/auth_service.dart';
 import 'package:product_app/auth/service/login_service.dart'; // Import LoginService
+import 'package:product_app/auth/service/user_service.dart';
 import 'package:product_app/product_market/cubit/product_cubit.dart';
 import 'package:product_app/product_market/product/utils/navigator/navigator_service.dart';
 import 'package:product_app/product_market/product/service/alert_service.dart';
@@ -56,8 +58,11 @@ class MyApp extends StatelessWidget with ProjectServiceMixin {
               create: (context) => ProductCubit(ProductService(service)),
             ),
             BlocProvider(
-              create: (context) => LoginCubit(LoginService(), AuthService()), // Register LoginCubit
+              create: (context) => LoginCubit(LoginService(), AuthService()),
             ),
+            BlocProvider(
+              create: (context) => UserCubit(UserService(service)),
+            )
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

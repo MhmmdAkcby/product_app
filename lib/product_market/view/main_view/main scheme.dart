@@ -66,6 +66,8 @@ class _WidgetSize {
   final double appBarText = 25;
   final double welcomeTextSize = 13;
   final double tabElevation = 20;
+  final double circularAvatarRadius = 24.0;
+  final double borderRadius = 10;
 }
 
 class _AppBarPadding extends EdgeInsets {

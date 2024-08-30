@@ -49,7 +49,11 @@
     "userName" : "Username",
     "password" : "Password",
     "login" : "Login",
-    "logout":"Logout"
+    "logout":"Logout",
+    "userError" : "User not found." ,
+    "listError" : "Error list.",
+    "name" : "Name",
+    "surname" : "Surname"
     
     
 
