@@ -1,31 +1,33 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_app/auth/cubit/login_cubit.dart';
 import 'package:product_app/auth/cubit/user_cubit.dart';
-import 'package:product_app/auth/cubit/user_cubit_sate.dart';
 import 'package:product_app/auth/model/user_model.dart';
 import 'package:product_app/product_market/product/mixin/categories_mixin.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
-import 'package:product_app/product_market/product/utils/lottie/loading_lottie.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:product_app/product_market/product/utils/lottie/loading_lottie.dart';
 import 'package:product_app/product_market/product/widget/my_button.dart';
-import 'package:product_app/product_market/view/user_detail/user_state.dart';
+import 'package:product_app/product_market/view/draw_user/user_state.dart';
 
-part 'user.g.dart';
+import '../../../auth/cubit/user_cubit_sate.dart';
 
-class UserView extends StatefulWidget {
+class UserView extends StatefulWidget with CategoriesMixin {
   const UserView({super.key});
 
   @override
-  State<UserView> createState() => _UserViewState();
+  State<UserView> createState() => _NawDrawerWidgetState();
 }
 
-class _UserViewState extends UserState<UserView> {
+class _NawDrawerWidgetState extends UserState<UserView> {
   @override
   Widget build(BuildContext context) {
     var d = AppLocalizations.of(context);
-    return Scaffold(
-      body: BlocBuilder<UserCubit, UserCubitSate>(
+    return Drawer(
+      backgroundColor: ProjectColor.whiteColor(),
+      child: BlocBuilder<UserCubit, UserCubitSate>(
         builder: (context, state) {
           if (state.isLoading) {
             return const LoadingLottie();
@@ -65,36 +67,42 @@ class _UserViewState extends UserState<UserView> {
     );
   }
 
-  Widget _buildUI({required BuildContext context, required Users filteredProducts}) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _userProfileView(filteredProducts: filteredProducts),
-              _userDetails(context: context, filteredProducts: filteredProducts),
-              _logoutButton(context),
-            ],
+  Column _buildUI({required BuildContext context, required Users filteredProducts}) {
+    var d = AppLocalizations.of(context);
+    return Column(
+      children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: DrawerHeader(
+            child: _userProfileView(filteredProducts: filteredProducts),
           ),
         ),
-      ),
+        _userInfo(
+            filteredProducts: filteredProducts,
+            data: '${d!.name}: ${filteredProducts.firstName}',
+            icon: Icons.supervised_user_circle_rounded),
+        _userInfo(
+            filteredProducts: filteredProducts,
+            data: '${d.surname}: ${filteredProducts.lastName}',
+            icon: Icons.supervised_user_circle_rounded),
+        _userInfo(
+            filteredProducts: filteredProducts,
+            data: '${d.userName}: ${filteredProducts.username}',
+            icon: Icons.data_saver_off_rounded),
+        _userInfo(filteredProducts: filteredProducts, data: filteredProducts.email, icon: Icons.mail),
+        _logoutButton(context),
+      ],
     );
   }
 
-  Widget _userDetails({required BuildContext context, required Users filteredProducts}) {
-    var d = AppLocalizations.of(context);
-
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        _user(text: '${d!.name}: ${filteredProducts.firstName}', icon: Icons.supervised_user_circle_rounded),
-        _user(text: '${d.surname}: ${filteredProducts.lastName}', icon: Icons.supervised_user_circle_rounded),
-        _user(text: '${d.userName}: ${filteredProducts.username}', icon: Icons.data_saver_off_rounded),
-        _user(text: filteredProducts.email, icon: Icons.email),
-      ],
+  Card _userInfo({required Users filteredProducts, required String data, required IconData icon}) {
+    return Card(
+      color: ProjectColor.whiteColor(),
+      elevation: _WidgetSize().elevation,
+      child: ListTile(
+        title: Text(data),
+        leading: Icon(icon),
+      ),
     );
   }
 
@@ -106,23 +114,6 @@ class _UserViewState extends UserState<UserView> {
         backgroundColor: ProjectColor.whiteColor(),
         radius: _WidgetSize().circularAvatarIcon,
         child: ClipOval(child: Image.network(filteredProducts.image, fit: BoxFit.cover)),
-      ),
-    );
-  }
-
-  Widget _user({required String text, required IconData icon}) {
-    return Container(
-      margin: const _WidgetPaddingAndMargin.marginAll(),
-      padding: const _WidgetPaddingAndMargin.paddingAll(),
-      width: MediaQuery.of(context).size.width * _WidgetSize().userWidth,
-      height: MediaQuery.of(context).size.height * _WidgetSize().userHeight,
-      decoration: _userBoxDecoration(),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _utext(text, context),
-          Icon(icon, color: ProjectColor.flushOrange()),
-        ],
       ),
     );
   }
@@ -148,4 +139,34 @@ class _UserViewState extends UserState<UserView> {
       ),
     );
   }
+
+  TextStyle? textTheme(
+    BuildContext context,
+    Color color,
+    double fontSize,
+    FontWeight fontWeight,
+  ) {
+    return Theme.of(context).textTheme.labelLarge?.copyWith(
+          color: color,
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+        );
+  }
+}
+
+class _WidgetSize {
+  final double myButtonHeight = 0.07;
+  final double myButtonWidth = 0.8;
+  final double myButtonFontSize = 17;
+  final double borderRadius = 10;
+  final double buttonFontSize = 18;
+  final double userProfileWidth = 0.5;
+  final double userProfileHeight = 0.2;
+  final double circularAvatarIcon = 70;
+  final double elevation = 10;
+}
+
+class _WidgetPaddingAndMargin extends EdgeInsets {
+  const _WidgetPaddingAndMargin.paddingAll() : super.all(8.0);
+  const _WidgetPaddingAndMargin.marginAll() : super.all(8.0);
 }

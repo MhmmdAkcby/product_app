@@ -9,9 +9,10 @@ class BottomAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      height: MediaQuery.of(context).size.height * _WidgetSize().bottomAppbarHeight,
       elevation: _WidgetSize().tabElevation,
       shadowColor: ProjectColor.whiteColor(),
-      color: ProjectColor.superSilver(),
+      color: ProjectColor.whiteColor(),
       shape: const CircularNotchedRectangle(),
       padding: EdgeInsets.zero,
       notchMargin: _WidgetSize()._notchMargin,
@@ -20,22 +21,7 @@ class BottomAppBarWidget extends StatelessWidget {
   }
 }
 
-class _FabWidget extends StatelessWidget {
-  const _FabWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return FloatingActionButton(
-        elevation: _WidgetSize().fabElevation,
-        shape: const CircleBorder(),
-        onPressed: () {},
-        child: const Icon(Icons.add));
-  }
-}
-
-enum _MyTabbarName { home, search, cart, profile }
+enum _MyTabbarName { home, search, cart, allProduct }
 
 extension _MyTabbarNameExtension on _MyTabbarName {
   IconData icons() {
@@ -46,8 +32,8 @@ extension _MyTabbarNameExtension on _MyTabbarName {
         return Icons.search;
       case _MyTabbarName.cart:
         return Icons.shopping_cart_rounded;
-      case _MyTabbarName.profile:
-        return Icons.person;
+      case _MyTabbarName.allProduct:
+        return Icons.category;
     }
   }
 
@@ -59,8 +45,8 @@ extension _MyTabbarNameExtension on _MyTabbarName {
         return localizations.tabSearch;
       case _MyTabbarName.cart:
         return localizations.cart;
-      case _MyTabbarName.profile:
-        return localizations.profile;
+      case _MyTabbarName.allProduct:
+        return localizations.category;
     }
   }
 }

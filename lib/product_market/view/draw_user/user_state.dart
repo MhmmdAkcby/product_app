@@ -7,7 +7,7 @@ import 'package:product_app/auth/cubit/user_cubit_sate.dart';
 import 'package:product_app/auth/model/user_model.dart';
 import 'package:product_app/auth/service/auth_service.dart';
 import 'package:product_app/product_market/product/utils/navigator/navigator_service.dart';
-import 'package:product_app/product_market/view/user_detail/user_view.dart';
+import 'package:product_app/product_market/view/draw_user/user_view.dart';
 
 abstract class UserState<T extends UserView> extends State<T> {
   late NavigationService navigationService;

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:product_app/product_market/product/utils/color/project_color.dart';
-import 'package:product_app/product_market/product/widget/draw_widget/naw_drawer_widget.dart';
+import 'package:product_app/product_market/view/draw_user/user_view.dart';
 import 'package:product_app/product_market/view/cart/cart_view.dart';
 import 'package:product_app/product_market/view/home/home_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:product_app/product_market/view/search/search_view.dart';
-import 'package:product_app/product_market/view/user_detail/user_view.dart';
 
 part 'main_scheme.g.dart';
 part 'appbar_part.g.dart';
@@ -24,11 +23,9 @@ class _MainSchemeState extends GenericMainScheme<MainScheme> {
       length: _MyTabbarName.values.length,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        drawer: const NawDrawerWidget(),
+        drawer: const UserView(),
         bottomNavigationBar: BottomAppBarWidget(widget: _tabbarMethod()),
         appBar: const _PartAppBar(),
-        floatingActionButton: const _FabWidget(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: _tabbarView(),
       ),
     );
@@ -38,7 +35,7 @@ class _MainSchemeState extends GenericMainScheme<MainScheme> {
     return TabBarView(
       physics: const NeverScrollableScrollPhysics(),
       controller: _tabController,
-      children: const [HomeView(), SearchView(), CartView(), UserView()],
+      children: const [HomeView(), SearchView(), CartView(), Placeholder()],
     );
   }
 
@@ -62,12 +59,13 @@ class _MainSchemeState extends GenericMainScheme<MainScheme> {
 
 class _WidgetSize {
   final double fabElevation = 20;
-  final double _notchMargin = 10;
+  final double _notchMargin = 5;
   final double appBarText = 25;
   final double welcomeTextSize = 13;
   final double tabElevation = 20;
   final double circularAvatarRadius = 24.0;
   final double borderRadius = 10;
+  final double bottomAppbarHeight = 0.065;
 }
 
 class _AppBarPadding extends EdgeInsets {

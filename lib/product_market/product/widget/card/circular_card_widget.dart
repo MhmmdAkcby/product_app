@@ -53,9 +53,9 @@ class _MyEdgeInsets extends EdgeInsets {
 }
 
 class _WidgetSize {
-  final double containerSize = 0.10;
+  final double containerSize = 0.09;
   final double radius = 18;
   final double elevation = 18;
-  final double textFontSize = 30;
-  final double dataSize = 15;
+  final double textFontSize = 25;
+  final double dataSize = 13;
 }

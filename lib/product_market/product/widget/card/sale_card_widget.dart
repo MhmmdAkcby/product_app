@@ -26,14 +26,7 @@ class SaleCardWidget extends StatelessWidget {
         margin: const _WidgetEdgeInsets.all(),
         padding: const _WidgetEdgeInsets.all(),
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(_WidgetSize().borderRadius)),
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [colorBegin, colorEnd],
-          ),
-        ),
+        decoration: _containerDecoration(),
         height: _WidgetSize().containerHeight,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -45,6 +38,17 @@ class SaleCardWidget extends StatelessWidget {
             _descriptionText(context)
           ],
         ),
+      ),
+    );
+  }
+
+  BoxDecoration _containerDecoration() {
+    return BoxDecoration(
+      borderRadius: BorderRadius.all(Radius.circular(_WidgetSize().borderRadius)),
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [colorBegin, colorEnd],
       ),
     );
   }
@@ -81,7 +85,7 @@ class _WidgetEdgeInsets extends EdgeInsets {
 class _WidgetSize {
   final double containerHeight = 200;
   final double borderRadius = 10;
-  final double iconSize = 150;
+  final double iconSize = 140;
   final double mainTextFontSize = 80;
   final double descriptionFontSize = 20;
 }

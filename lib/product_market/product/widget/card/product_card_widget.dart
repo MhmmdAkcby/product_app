@@ -27,6 +27,7 @@ class ProductCardWidget extends StatelessWidget {
             color: ProjectColor.whiteColor(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Image.network(image, fit: BoxFit.cover),
                 const Divider(),
@@ -64,10 +65,9 @@ Widget _priceAndRatingInfoText({required BuildContext context, required String p
 }
 
 class _WidgetSize {
-  final int length = 0;
-  final double width = 0.45;
+  final double width = 0.4;
   final double titleSize = 15;
-  final double priceSize = 18;
+  final double priceSize = 17;
 }
 
 class _WidgetPadding extends EdgeInsets {
