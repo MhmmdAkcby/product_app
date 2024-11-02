@@ -7,46 +7,6 @@
  smooth and engaging user experience. The application is fully internationalized, utilizing Flutter
  Localizations and Intl for multilingual support
 
-## Packages I Use
-
- #### ---dio---
-   dio: ^5.4.3+1
-
-  #### ---bloc---
-   flutter_bloc: ^8.1.5
-  
-   equatable: ^2.0.5
-
-  #### ---route---
-  path: ^1.9.0 \n
-  
-  get_it: ^7.7.0
-
-  
-
-  #### ---toast message---
-  delightful_toast: ^1.1.0
-
-  #### ---cache---
-   shared_preferences: ^2.3.2
-
-  #### ---lottie---
-  lottie: ^3.1.2
-
-  #### ---google---
-  json_serializable: ^6.8.0
-  
-  json_annotation: ^4.9.0
-
-  
-#### ---localizations---
-  flutter_localizations
-  
-  sdk: flutter
-  
-  intl: any
-  
-  #### build_runner: ^2.3.3    
 
 # image & video
 ![4](https://github.com/user-attachments/assets/2cc6da48-efee-487e-a5ac-f914dabeee3c)
